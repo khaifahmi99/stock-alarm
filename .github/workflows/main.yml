@@ -26,7 +26,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run script 
-        run: python script.py
+        run: python main.py
 
       - name: Print end time
         run: echo "The end time is $(date)"

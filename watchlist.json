@@ -1,0 +1,64 @@
+{
+	"watchlist": [
+		{
+			"market": "NASDAQ",
+			"symbol": "AAPL",
+			"threshold": 175
+		},
+		{
+			"market": "NASDAQ",
+			"symbol": "AMD",
+			"threshold": 150
+		},
+		{
+			"market": "NASDAQ",
+			"symbol": "AMZN",
+			"threshold": 150
+		},
+		{
+			"market": "NASDAQ",
+			"symbol": "ARM",
+			"threshold": 55
+		},
+		{
+			"market": "NYSE",
+			"symbol": "DIS",
+			"threshold": 89
+		},
+		{
+			"market": "NASDAQ",
+			"symbol": "DUOL",
+			"threshold": 150
+		},
+		{
+			"market": "NASDAQ",
+			"symbol": "GOOGL",
+			"threshold": 130
+		},
+		{
+			"market": "NASDAQ",
+			"symbol": "META",
+			"threshold": 400
+		},
+		{
+			"market": "NASDAQ",
+			"symbol": "MSFT",
+			"threshold": 350
+		},
+		{
+			"market": "NASDAQ",
+			"symbol": "NFLX",
+			"threshold": 480
+		},
+		{
+			"market": "NASDAQ",
+			"symbol": "NVDA",
+			"threshold": 550
+		},
+		{
+			"market": "NASDAQ",
+			"symbol": "TSLA",
+			"threshold": 160
+		}
+	]
+}

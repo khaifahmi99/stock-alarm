@@ -1,0 +1,33 @@
+name: Main
+run-name: Market Check 🚀
+on:
+  schedule:
+    # 1 hour after the US market opens (UTC)
+    - cron:  '30 14 * * 1-5'
+jobs:
+  Market-Check-Action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Print start time
+        run: echo "The start time is $(date)"
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run script 
+        run: python script.py
+
+      - name: Print end time
+        run: echo "The end time is $(date)"
+
+
+      

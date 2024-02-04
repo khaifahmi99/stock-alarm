@@ -27,6 +27,10 @@ jobs:
 
       - name: Run script 
         run: python main.py
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }} 
+          PRIMARY_RECEPIENT: ${{ env.PRIMARY_RECEPIENT }}
+          DEBUG_RECEPIENT: ${{ env.DEBUG_RECEPIENT }} 
 
       - name: Print end time
         run: echo "The end time is $(date)"

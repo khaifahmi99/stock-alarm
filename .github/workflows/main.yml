@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Market-Check-Action:
+  US-Market-Check-Action:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

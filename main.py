@@ -133,5 +133,7 @@ else:
 if len(errors) > 0:
     print('[ERROR] Sending debug email...')
     send_debug_email(errors)
+    print('[FIN] Fail')
+    raise Exception('Error(s) found')
 
-print('---------------------------------------------------------------------------')
+print('[FIN] Success')

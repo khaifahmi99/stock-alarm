@@ -12,7 +12,7 @@ PRIMARY_RECEPIENT = os.environ['PRIMARY_RECEPIENT']
 
 DEBUG_RECEPIENT = os.environ['DEBUG_RECEPIENT']
 
-def analyse_price(market, symbol):
+def parse_price(market, symbol):
     google_finance_request_url = "https://www.google.com/finance?q={}%3A{}".format(market, symbol)
     try:
         open_url = requests.get(google_finance_request_url)
@@ -116,7 +116,7 @@ errors = []
 for item in watchlist:
     symbol = item['symbol']
     try:
-        price = analyse_price(item['market'], symbol)
+        price = parse_price(item['market'], symbol)
         if price is not None:
             upper_thresholds = item['thresholds']['upper']
             lower_thresholds = item['thresholds']['lower']

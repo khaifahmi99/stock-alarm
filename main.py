@@ -12,8 +12,8 @@ PRIMARY_RECEPIENT = os.environ['PRIMARY_RECEPIENT']
 
 DEBUG_RECEPIENT = os.environ['DEBUG_RECEPIENT']
 
-def stock_sms_alert_on_price_hike(your_stock_market, your_stock_symbol):
-    google_finance_request_url = "https://www.google.com/finance?q={}%3A{}".format(your_stock_market, your_stock_symbol)
+def analyse_price(market, symbol):
+    google_finance_request_url = "https://www.google.com/finance?q={}%3A{}".format(market, symbol)
     try:
         open_url = requests.get(google_finance_request_url)
         get_text = open_url.text
@@ -98,23 +98,23 @@ timestamp_iso = time.strftime('%Y-%m-%d %H:%M:%S')
 print(f'[{timestamp_iso}] Stock Price Alert')
 watchlist = parse_watchlist()
 
-selected = []
+lower_selected = []
 errors = []
 
 for item in watchlist:
     symbol = item['symbol']
     try:
-        price = stock_sms_alert_on_price_hike(item['market'], symbol)
+        price = analyse_price(item['market'], symbol)
         if price is not None:
-            threshold = item['threshold']
-            if price <= threshold:
-                print(f'[{symbol} (${price})] Price has dropped below threshold (${threshold})')
-                selected.append({
+            lower_thresholds = item['thresholds']['lower']
+            if len(lower_thresholds) > 0 and  price <= lower_thresholds[0]:
+                print(f'[{symbol} (${price})] Price has dropped below threshold (${lower_thresholds[0]})')
+                lower_selected.append({
                     'symbol': symbol,
                     'price': price,
                 })
             else:
-                print(f'[{symbol} (${price})] Above threshold (${threshold}), ignoring...')
+                print(f'[{symbol} (${price})] Above threshold (${lower_thresholds[0]}), ignoring...')
         else:
             print(f'[{symbol}] Error occurred in getting price change. Please ensure the stock symbol entered is correct')
             errors.append({ 'symbol': symbol, 'error': 'Parsing Error' })
@@ -124,9 +124,9 @@ for item in watchlist:
 
     time.sleep(5)
 
-if len(selected) > 0:
+if len(lower_selected) > 0:
     print('Sending email...')
-    send_email(selected)
+    send_email(lower_selected)
 else:
     print('No stocks reached the threshold')
 

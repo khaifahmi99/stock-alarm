@@ -3,62 +3,125 @@
 		{
 			"market": "NASDAQ",
 			"symbol": "AAPL",
-			"threshold": 175
+			"thresholds": {
+				"lower": [
+					175
+				],
+				"upper": [
+					250,
+					300
+				]
+			}
 		},
 		{
 			"market": "NASDAQ",
 			"symbol": "AMD",
-			"threshold": 150
+			"thresholds": {
+				"lower": [
+					50
+				],
+				"upper": []
+			}
 		},
 		{
 			"market": "NASDAQ",
 			"symbol": "AMZN",
-			"threshold": 150
+			"thresholds": {
+				"lower": [
+					150
+				],
+				"upper": []
+			}
 		},
 		{
 			"market": "NASDAQ",
 			"symbol": "ARM",
-			"threshold": 55
+			"thresholds": {
+				"lower": [
+					55
+				],
+				"upper": []
+			}
 		},
 		{
 			"market": "NYSE",
 			"symbol": "DIS",
-			"threshold": 89
+			"thresholds": {
+				"lower": [
+					89
+				],
+				"upper": []
+			}
 		},
 		{
 			"market": "NASDAQ",
 			"symbol": "DUOL",
-			"threshold": 150
+			"thresholds": {
+				"lower": [
+					150
+				],
+				"upper": []
+			}
 		},
 		{
 			"market": "NASDAQ",
 			"symbol": "GOOGL",
-			"threshold": 130
+			"thresholds": {
+				"lower": [
+					130
+				],
+				"upper": []
+			}
 		},
 		{
 			"market": "NASDAQ",
 			"symbol": "META",
-			"threshold": 400
+			"thresholds": {
+				"lower": [
+					400
+				],
+				"upper": []
+			}
 		},
 		{
 			"market": "NASDAQ",
 			"symbol": "MSFT",
-			"threshold": 350
+			"thresholds": {
+				"lower": [
+					350
+				],
+				"upper": []
+			}
 		},
 		{
 			"market": "NASDAQ",
 			"symbol": "NFLX",
-			"threshold": 480
+			"thresholds": {
+				"lower": [
+					480
+				],
+				"upper": []
+			}
 		},
 		{
 			"market": "NASDAQ",
 			"symbol": "NVDA",
-			"threshold": 550
+			"thresholds": {
+				"lower": [
+					550
+				],
+				"upper": []
+			}
 		},
 		{
 			"market": "NASDAQ",
 			"symbol": "TSLA",
-			"threshold": 160
+			"thresholds": {
+				"lower": [
+					160
+				],
+				"upper": []
+			}
 		}
 	]
 }

@@ -51,14 +51,25 @@ def parse_watchlist():
 
     return watchlist
 
-def send_email(items):
-    body = "<p>The following stocks have dropped below the threshold:</p>"
-    body += "<ul>"
-    for item in items:
-        body += "<li>{} ({})</li>".format(item['symbol'], item['price'])
-    body += "</ul>"
-    body += "</hr>"
-    body += "<p>These stocks have dropped below the threshold you have set.</p>"
+def send_email(lower_items, upper_items):
+    body = ''
+    if len(lower_items) > 0:
+        body += "<p>The following stocks have dropped below the threshold:</p>"
+        body += "<ul>"
+        for item in items:
+            body += "<li>{} ({})</li>".format(lower_items['symbol'], lower_items['price'])
+        body += "</ul>"
+        body += "</hr>"
+    if len(upper_items) > 0:
+        body += "<p>These stocks have increased above the threshold:</p>"
+        body += "<ul>"
+        for item in items:
+            body += "<li>{} ({})</li>".format(upper_items['symbol'], upper_items['price'])
+        body += "</ul>"
+        body += "</hr>"
+
+    body += "<br />"
+    body += "<br />"
     body += "<p>This email was sent automatically by the Stock Price Alert App.</p>"
     body += "<p>Thank you for using the Stock Price Alert App.</p>"
     body += "<p>Thank you!</p>"
@@ -98,6 +109,7 @@ timestamp_iso = time.strftime('%Y-%m-%d %H:%M:%S')
 print(f'[{timestamp_iso}] Stock Price Alert')
 watchlist = parse_watchlist()
 
+upper_selected = []
 lower_selected = []
 errors = []
 
@@ -106,15 +118,30 @@ for item in watchlist:
     try:
         price = analyse_price(item['market'], symbol)
         if price is not None:
+            upper_thresholds = item['thresholds']['upper']
             lower_thresholds = item['thresholds']['lower']
+            
+            print(f'[{symbol} (${price})] Checking price change (lower)')
             if len(lower_thresholds) > 0 and  price <= lower_thresholds[0]:
-                print(f'[{symbol} (${price})] Price has dropped below threshold (${lower_thresholds[0]})')
+                print(f'Price has dropped below threshold (${lower_thresholds[0]})')
                 lower_selected.append({
                     'symbol': symbol,
                     'price': price,
                 })
             else:
-                print(f'[{symbol} (${price})] Above threshold (${lower_thresholds[0]}), ignoring...')
+                print(f'Above threshold (${lower_thresholds[0]}), ignoring...')
+
+            print(f'[{symbol} (${price})] Checking price change (upper)')
+            if len(upper_thresholds) > 0 and price >= upper_thresholds[0]:
+                print(f'Price has risen above threshold (${upper_thresholds[0]})')
+                upper_selected.append({
+                    'symbol': symbol,
+                    'price': price,
+                })
+            else:
+                print(f'Below threshold (${upper_thresholds[0]}), ignoring...')
+
+            print('---------------------------------------------------------------')
         else:
             print(f'[{symbol}] Error occurred in getting price change. Please ensure the stock symbol entered is correct')
             errors.append({ 'symbol': symbol, 'error': 'Parsing Error' })
@@ -124,9 +151,9 @@ for item in watchlist:
 
     time.sleep(5)
 
-if len(lower_selected) > 0:
+if len(lower_selected) > 0 or len(upper_selected) > 0:
     print('Sending email...')
-    send_email(lower_selected)
+    send_email(lower_selected, upper_selected)
 else:
     print('No stocks reached the threshold')
 

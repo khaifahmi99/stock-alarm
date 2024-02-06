@@ -12,6 +12,9 @@ PRIMARY_RECEPIENT = os.environ['PRIMARY_RECEPIENT']
 
 DEBUG_RECEPIENT = os.environ['DEBUG_RECEPIENT']
 
+print(PRIMARY_RECEPIENT)
+print(DEBUG_RECEPIENT)
+
 def parse_price(market, symbol):
     google_finance_request_url = "https://www.google.com/finance?q={}%3A{}".format(market, symbol)
     try:

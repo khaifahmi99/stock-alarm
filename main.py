@@ -12,9 +12,6 @@ PRIMARY_RECEPIENT = os.environ['PRIMARY_RECEPIENT']
 
 DEBUG_RECEPIENT = os.environ['DEBUG_RECEPIENT']
 
-print(PRIMARY_RECEPIENT)
-print(DEBUG_RECEPIENT)
-
 def parse_price(market, symbol):
     google_finance_request_url = "https://www.google.com/finance?q={}%3A{}".format(market, symbol)
     try:
@@ -125,24 +122,26 @@ for item in watchlist:
             lower_thresholds = item['thresholds']['lower']
             
             print(f'[{symbol} (${price})] Checking price change (lower)')
-            if len(lower_thresholds) > 0 and  price <= lower_thresholds[0]:
-                print(f'Price has dropped below threshold (${lower_thresholds[0]})')
-                lower_selected.append({
-                    'symbol': symbol,
-                    'price': price,
-                })
-            else:
-                print(f'Above threshold (${lower_thresholds[0]}), ignoring...')
+            if len(lower_thresholds) > 0:
+                if price <= lower_thresholds[0]:
+                    print(f'Price has dropped below threshold (${lower_thresholds[0]})')
+                    lower_selected.append({
+                        'symbol': symbol,
+                        'price': price,
+                    })
+                else:
+                    print(f'Above threshold (${lower_thresholds[0]}), ignoring...')
 
             print(f'[{symbol} (${price})] Checking price change (upper)')
-            if len(upper_thresholds) > 0 and price >= upper_thresholds[0]:
-                print(f'Price has risen above threshold (${upper_thresholds[0]})')
-                upper_selected.append({
-                    'symbol': symbol,
-                    'price': price,
-                })
-            else:
-                print(f'Below threshold (${upper_thresholds[0]}), ignoring...')
+            if len(upper_thresholds) > 0:
+                if price >= upper_thresholds[0]:
+                    print(f'Price has risen above threshold (${upper_thresholds[0]})')
+                    upper_selected.append({
+                        'symbol': symbol,
+                        'price': price,
+                    })
+                else:
+                    print(f'Below threshold (${upper_thresholds[0]}), ignoring...')
 
             print('---------------------------------------------------------------')
         else:
@@ -156,13 +155,13 @@ for item in watchlist:
 
 if len(lower_selected) > 0 or len(upper_selected) > 0:
     print('Sending email...')
-    send_email(lower_selected, upper_selected)
+    # send_email(lower_selected, upper_selected)
 else:
     print('No stocks reached the threshold')
 
 if len(errors) > 0:
     print('[ERROR] Sending debug email...')
-    send_debug_email(errors)
+    # send_debug_email(errors)
     print('[FIN] Fail')
     raise Exception('Error(s) found')
 

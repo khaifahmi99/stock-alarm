@@ -55,14 +55,14 @@ def send_email(lower_items, upper_items):
         body += "<p>The following stocks have dropped below the threshold:</p>"
         body += "<ul>"
         for item in lower_items:
-            body += "<li>{} ({})</li>".format(lower_items['symbol'], lower_items['price'])
+            body += "<li>{} ({}) - {}/{} threshold met</li>".format(lower_items['symbol'], lower_items['price'], len(lower_items['thresholds_reached']), len(lower_items['thresholds_configured']))
         body += "</ul>"
         body += "</hr>"
     if len(upper_items) > 0:
         body += "<p>These stocks have increased above the threshold:</p>"
         body += "<ul>"
         for item in upper_items:
-            body += "<li>{} ({})</li>".format(upper_items['symbol'], upper_items['price'])
+            body += "<li>{} ({}) - {}/{} threshold met</li>".format(upper_items['symbol'], upper_items['price'], len(upper_items['thresholds_reached']), len(upper_items['thresholds_configured']))
         body += "</ul>"
         body += "</hr>"
 
@@ -120,26 +120,40 @@ for item in watchlist:
             lower_thresholds = item['thresholds']['lower']
             
             print(f'[{symbol} (${price})] Checking price change (lower)')
-            if len(lower_thresholds) > 0:
-                if price <= lower_thresholds[0]:
-                    print(f'Price has dropped below threshold (${lower_thresholds[0]})')
+            lower_threshold_count = len(lower_thresholds)
+            if lower_threshold_count > 0:
+                threshold_reached = []
+                for threshold in lower_thresholds:
+                    if price <= threshold:
+                        print(f'Price has dropped below threshold (${threshold})')
+                        threshold_reached.append(threshold)
+                    else:
+                        print(f'Above threshold (${threshold}), ignoring...')
+                if len(threshold_reached) > 0:
                     lower_selected.append({
                         'symbol': symbol,
                         'price': price,
+                        'thresholds_reached': threshold_reached,
+                        'threshold_configured': lower_thresholds,
                     })
-                else:
-                    print(f'Above threshold (${lower_thresholds[0]}), ignoring...')
 
             print(f'[{symbol} (${price})] Checking price change (upper)')
+            upper_threshold_count = len(upper_thresholds)
             if len(upper_thresholds) > 0:
-                if price >= upper_thresholds[0]:
-                    print(f'Price has risen above threshold (${upper_thresholds[0]})')
+                threshold_reached = []
+                for threshold in upper_thresholds:
+                    if price >= threshold:
+                        print(f'Price has risen above threshold (${threshold})')
+                        threshold_reached.append(threshold)
+                    else:
+                        print(f'Below threshold (${threshold}), ignoring...')
+                if len(threshold_reached) > 0:
                     upper_selected.append({
                         'symbol': symbol,
                         'price': price,
+                        'thresholds_reached': threshold_reached,
+                        'threshold_configured': upper_thresholds,
                     })
-                else:
-                    print(f'Below threshold (${upper_thresholds[0]}), ignoring...')
 
             print('---------------------------------------------------------------')
         else:
@@ -153,13 +167,13 @@ for item in watchlist:
 
 if len(lower_selected) > 0 or len(upper_selected) > 0:
     print('Sending email...')
-    # send_email(lower_selected, upper_selected)
+    send_email(lower_selected, upper_selected)
 else:
     print('No stocks reached the threshold')
 
 if len(errors) > 0:
     print('[ERROR] Sending debug email...')
-    # send_debug_email(errors)
+    send_debug_email(errors)
     print('[FIN] Fail')
     raise Exception('Error(s) found')
 

@@ -34,8 +34,6 @@ def parse_price(market, symbol):
         current_price = float(cleaned_price)
 
         return current_price
-
-        return stock_description['current_price']
     except Exception as e:
         print(str(e))
         print('Error occurred in getting price change. Please ensure the stock symbol entered is correct')
@@ -56,14 +54,14 @@ def send_email(lower_items, upper_items):
     if len(lower_items) > 0:
         body += "<p>The following stocks have dropped below the threshold:</p>"
         body += "<ul>"
-        for item in items:
+        for item in lower_items:
             body += "<li>{} ({})</li>".format(lower_items['symbol'], lower_items['price'])
         body += "</ul>"
         body += "</hr>"
     if len(upper_items) > 0:
         body += "<p>These stocks have increased above the threshold:</p>"
         body += "<ul>"
-        for item in items:
+        for item in upper_items:
             body += "<li>{} ({})</li>".format(upper_items['symbol'], upper_items['price'])
         body += "</ul>"
         body += "</hr>"

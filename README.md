@@ -6,8 +6,8 @@ The Stock-Alarm project is a simple tool designed to monitor stock data from a l
 
 ## Features
 - [X] Lower Threshold
-- [ ] Upper Threshold
-- [ ] Multiple Threholds
+- [X] Upper Threshold
+- [X] Multiple Threholds
 - [X] Email the recipient when threshold reched
 - [X] Notify dev/support when failure occurs
 

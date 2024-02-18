@@ -18,7 +18,7 @@
 			"symbol": "AMD",
 			"thresholds": {
 				"lower": [
-					50
+					125
 				],
 				"upper": []
 			}
@@ -30,7 +30,7 @@
 				"lower": [
 					150
 				],
-				"upper": []
+				"upper": [200]
 			}
 		},
 		{
@@ -38,9 +38,10 @@
 			"symbol": "ARM",
 			"thresholds": {
 				"lower": [
-					55
+					55,
+					100
 				],
-				"upper": []
+				"upper": [200]
 			}
 		},
 		{
@@ -48,7 +49,7 @@
 			"symbol": "DIS",
 			"thresholds": {
 				"lower": [
-					89
+					95
 				],
 				"upper": []
 			}
@@ -58,9 +59,10 @@
 			"symbol": "DUOL",
 			"thresholds": {
 				"lower": [
-					150
+					150,
+					160
 				],
-				"upper": []
+				"upper": [300]
 			}
 		},
 		{
@@ -70,7 +72,7 @@
 				"lower": [
 					130
 				],
-				"upper": []
+				"upper": [200]
 			}
 		},
 		{
@@ -78,7 +80,8 @@
 			"symbol": "META",
 			"thresholds": {
 				"lower": [
-					400
+					400,
+					430
 				],
 				"upper": []
 			}
@@ -88,9 +91,10 @@
 			"symbol": "MSFT",
 			"thresholds": {
 				"lower": [
-					350
+					350,
+					380
 				],
-				"upper": []
+				"upper": [500]
 			}
 		},
 		{
@@ -108,9 +112,10 @@
 			"symbol": "NVDA",
 			"thresholds": {
 				"lower": [
-					550
+					550,
+					650
 				],
-				"upper": []
+				"upper": [800]
 			}
 		},
 		{
@@ -118,9 +123,76 @@
 			"symbol": "TSLA",
 			"thresholds": {
 				"lower": [
-					160
+					160,
+					180
 				],
-				"upper": []
+				"upper": [
+					300
+				]
+			}
+		},
+		{
+			"market": "NYSE",
+			"symbol": "TWLO",
+			"thresholds": {
+				"lower": [
+					40
+				],
+				"upper": [
+					70,
+					80
+				]
+			}
+		},
+		{
+			"market": "NYSE",
+			"symbol": "PLTR",
+			"thresholds": {
+				"lower": [
+					17
+				],
+				"upper": [
+					30
+				]
+			}
+		},
+		{
+			"market": "NYSE",
+			"symbol": "TSM",
+			"thresholds": {
+				"lower": [
+					100
+				],
+				"upper": [
+					200
+				]
+			}
+		},
+		{
+			"market": "NASDAQ",
+			"symbol": "ADBE",
+			"thresholds": {
+				"lower": [
+					400,
+					450,
+					500
+				],
+				"upper": [
+					650
+				]
+			}
+		},
+		{
+			"market": "NYSE",
+			"symbol": "UBER",
+			"thresholds": {
+				"lower": [
+					60,
+					65
+				],
+				"upper": [
+					100
+				]
 			}
 		}
 	]

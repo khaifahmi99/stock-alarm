@@ -111,6 +111,8 @@ upper_selected = []
 lower_selected = []
 errors = []
 
+metadata = []
+
 for item in watchlist:
     symbol = item['symbol']
     try:
@@ -156,6 +158,15 @@ for item in watchlist:
                     })
 
             print('---------------------------------------------------------------')
+
+            metadata.append({
+                'code': symbol,
+                'currentPrice': price,
+                'thresholds': {
+                    'upper': upper_thresholds,
+                    'lower': lower_thresholds,
+                }
+            })
         else:
             print(f'[{symbol}] Error occurred in getting price change. Please ensure the stock symbol entered is correct')
             errors.append({ 'symbol': symbol, 'error': 'Parsing Error' })
@@ -164,6 +175,10 @@ for item in watchlist:
         errors.append({ 'symbol': symbol, 'error': 'Internal Error' })
 
     time.sleep(5)
+
+if len(metadata) > 0:
+    with open('metadata.json', 'w') as f:
+        json.dump(metadata, f)
 
 if len(lower_selected) > 0 or len(upper_selected) > 0:
     print('Sending email...')

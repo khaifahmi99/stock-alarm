@@ -26,11 +26,17 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run script 
-        run: python main.py
+        run: python main.py # this will outputs a new file (metadata.json)
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }} 
           PRIMARY_RECEPIENT: ${{ vars.PRIMARY_RECEPIENT }}
           DEBUG_RECEPIENT: ${{ vars.DEBUG_RECEPIENT }} 
+
+      - name: Save artefact
+        uses: actions/upload-artifact@v3
+        with:
+          name: metadata
+          path: metadata.json
 
       - name: Print end time
         run: echo "The end time is $(date)"

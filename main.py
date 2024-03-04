@@ -55,14 +55,14 @@ def send_email(lower_items, upper_items):
         body += "<p>The following stocks have dropped below the threshold:</p>"
         body += "<ul>"
         for item in lower_items:
-            body += "<li>{} ({}) - {}/{} threshold met</li>".format(lower_items['symbol'], lower_items['price'], len(lower_items['thresholds_reached']), len(lower_items['thresholds_configured']))
+            body += "<li>{} ({}) - {}/{} threshold met</li>".format(item['symbol'], item['price'], len(item['thresholds_reached']), len(item['thresholds_configured']))
         body += "</ul>"
         body += "</hr>"
     if len(upper_items) > 0:
         body += "<p>These stocks have increased above the threshold:</p>"
         body += "<ul>"
         for item in upper_items:
-            body += "<li>{} ({}) - {}/{} threshold met</li>".format(upper_items['symbol'], upper_items['price'], len(upper_items['thresholds_reached']), len(upper_items['thresholds_configured']))
+            body += "<li>{} ({}) - {}/{} threshold met</li>".format(item['symbol'], item['price'], len(item['thresholds_reached']), len(item['thresholds_configured']))
         body += "</ul>"
         body += "</hr>"
 

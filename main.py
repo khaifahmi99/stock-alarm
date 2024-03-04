@@ -134,7 +134,7 @@ for item in watchlist:
                         'symbol': symbol,
                         'price': price,
                         'thresholds_reached': threshold_reached,
-                        'threshold_configured': lower_thresholds,
+                        'thresholds_configured': lower_thresholds,
                     })
 
             print(f'[{symbol} (${price})] Checking price change (upper)')
@@ -152,7 +152,7 @@ for item in watchlist:
                         'symbol': symbol,
                         'price': price,
                         'thresholds_reached': threshold_reached,
-                        'threshold_configured': upper_thresholds,
+                        'thresholds_configured': upper_thresholds,
                     })
 
             print('---------------------------------------------------------------')

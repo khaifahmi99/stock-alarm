@@ -42,6 +42,14 @@ cp example.env .env
 python3 main.py
 ```
 
+### Configuring Database (Optional)
+MongoDB is used to store the collection price for every run. This is an opt-in feature.
+This is enabled by providing the `DATABASE_URL` in the environment variables.
+
+To set up the mongoDB:
+1. Fill in the `DATABASE_URL` in the `.env` file
+2. Run `prisma db push` to provision the collection within the database (specified within the `DATABASE_URL`)
+
 ## Contributing
 Contributions are welcome! If you have suggestions, feature requests, or bug reports, please create an issue or submit a pull request.
 

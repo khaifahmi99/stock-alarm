@@ -6,11 +6,15 @@ import json
 import resend
 from dotenv import load_dotenv
 load_dotenv()
+import asyncio
+from prisma import Prisma
 
 RESEND_API_KEY = os.environ['RESEND_API_KEY']
 PRIMARY_RECEPIENT = os.environ['PRIMARY_RECEPIENT']
 
 DEBUG_RECEPIENT = os.environ['DEBUG_RECEPIENT']
+
+DATABASE_URL = os.environ['DATABASE_URL']
 
 def parse_price(market, symbol):
     google_finance_request_url = "https://www.google.com/finance?q={}%3A{}".format(market, symbol)
@@ -102,94 +106,143 @@ def send_debug_email(errors):
     email = resend.Emails.send(params)
     print(email)
 
-resend.api_key = RESEND_API_KEY
-timestamp_iso = time.strftime('%Y-%m-%d %H:%M:%S')
-print(f'[{timestamp_iso}] Stock Price Alert')
-watchlist = parse_watchlist()
+async def open_database():
+    if DATABASE_URL is None:
+        print('[WARN] Database config not set')
+        return None
 
-upper_selected = []
-lower_selected = []
-errors = []
+    db = Prisma()
+    await db.connect()
 
-metadata = []
+    print('[DB] Connected to database')
+    return db
 
-for item in watchlist:
-    symbol = item['symbol']
+async def save_price(db, symbol, price):
+    if db is None:
+        return None
+
     try:
-        price = parse_price(item['market'], symbol)
-        if price is not None:
-            upper_thresholds = item['thresholds']['upper']
-            lower_thresholds = item['thresholds']['lower']
-            
-            print(f'[{symbol} (${price})] Checking price change (lower)')
-            lower_threshold_count = len(lower_thresholds)
-            if lower_threshold_count > 0:
-                threshold_reached = []
-                for threshold in lower_thresholds:
-                    if price <= threshold:
-                        print(f'Price has dropped below threshold (${threshold})')
-                        threshold_reached.append(threshold)
-                    else:
-                        print(f'Above threshold (${threshold}), ignoring...')
-                if len(threshold_reached) > 0:
-                    lower_selected.append({
-                        'symbol': symbol,
-                        'price': price,
-                        'thresholds_reached': threshold_reached,
-                        'thresholds_configured': lower_thresholds,
-                    })
-
-            print(f'[{symbol} (${price})] Checking price change (upper)')
-            upper_threshold_count = len(upper_thresholds)
-            if len(upper_thresholds) > 0:
-                threshold_reached = []
-                for threshold in upper_thresholds:
-                    if price >= threshold:
-                        print(f'Price has risen above threshold (${threshold})')
-                        threshold_reached.append(threshold)
-                    else:
-                        print(f'Below threshold (${threshold}), ignoring...')
-                if len(threshold_reached) > 0:
-                    upper_selected.append({
-                        'symbol': symbol,
-                        'price': price,
-                        'thresholds_reached': threshold_reached,
-                        'thresholds_configured': upper_thresholds,
-                    })
-
-            print('---------------------------------------------------------------')
-
-            metadata.append({
-                'code': symbol,
-                'currentPrice': price,
-                'thresholds': {
-                    'upper': upper_thresholds,
-                    'lower': lower_thresholds,
-                }
-            })
-        else:
-            print(f'[{symbol}] Error occurred in getting price change. Please ensure the stock symbol entered is correct')
-            errors.append({ 'symbol': symbol, 'error': 'Parsing Error' })
-        
+        await db.stock.create({
+            'symbol': symbol,
+            'price': price
+        })
     except Exception as e:
-        errors.append({ 'symbol': symbol, 'error': 'Internal Error' })
+        print(str(e))
+        print(f'[DB] Error saving price for [{symbol}] to database')
+        return False
 
-    time.sleep(5)
+    print(f'[DB] Saved price for [{symbol}] to database')
+    return True
 
-if len(metadata) > 0:
-    with open('metadata.json', 'w') as f:
-        json.dump(metadata, f)
 
-if len(lower_selected) > 0 or len(upper_selected) > 0:
-    print('Sending email...')
-    send_email(lower_selected, upper_selected)
-else:
-    print('No stocks reached the threshold')
+async def close_database(db):
+    if db is None:
+        return false
 
-if len(errors) > 0:
-    print('[ERROR] Sending debug email...')
-    send_debug_email(errors)
-    print('[FIN] Fail')
-    raise Exception('Error(s) found')
+    await db.disconnect()
+    print('[DB] Disconnected from database')
+    return True
 
-print('[FIN] Success')
+async def main() -> None:
+    resend.api_key = RESEND_API_KEY
+    timestamp_iso = time.strftime('%Y-%m-%d %H:%M:%S')
+    print(f'[{timestamp_iso}] Stock Price Alert')
+    watchlist = parse_watchlist()
+
+    upper_selected = []
+    lower_selected = []
+    errors = []
+
+    metadata = []
+
+    db = await open_database()
+
+    for item in watchlist:
+        symbol = item['symbol']
+        try:
+            price = parse_price(item['market'], symbol)
+            if price is not None:
+                print(f'[{symbol}] Price: ${price}')
+
+                await save_price(db, symbol, price)
+
+                upper_thresholds = item['thresholds']['upper']
+                lower_thresholds = item['thresholds']['lower']
+                
+                print(f'[{symbol} (${price})] Checking price change (lower)')
+                lower_threshold_count = len(lower_thresholds)
+                if lower_threshold_count > 0:
+                    threshold_reached = []
+                    for threshold in lower_thresholds:
+                        if price <= threshold:
+                            print(f'Price has dropped below threshold (${threshold})')
+                            threshold_reached.append(threshold)
+                        else:
+                            print(f'Above threshold (${threshold}), ignoring...')
+                    if len(threshold_reached) > 0:
+                        lower_selected.append({
+                            'symbol': symbol,
+                            'price': price,
+                            'thresholds_reached': threshold_reached,
+                            'thresholds_configured': lower_thresholds,
+                        })
+
+                print(f'[{symbol} (${price})] Checking price change (upper)')
+                upper_threshold_count = len(upper_thresholds)
+                if len(upper_thresholds) > 0:
+                    threshold_reached = []
+                    for threshold in upper_thresholds:
+                        if price >= threshold:
+                            print(f'Price has risen above threshold (${threshold})')
+                            threshold_reached.append(threshold)
+                        else:
+                            print(f'Below threshold (${threshold}), ignoring...')
+                    if len(threshold_reached) > 0:
+                        upper_selected.append({
+                            'symbol': symbol,
+                            'price': price,
+                            'thresholds_reached': threshold_reached,
+                            'thresholds_configured': upper_thresholds,
+                        })
+
+                print('---------------------------------------------------------------')
+
+                metadata.append({
+                    'code': symbol,
+                    'currentPrice': price,
+                    'thresholds': {
+                        'upper': upper_thresholds,
+                        'lower': lower_thresholds,
+                    }
+                })
+            else:
+                print(f'[{symbol}] Error occurred in getting price change. Please ensure the stock symbol entered is correct')
+                errors.append({ 'symbol': symbol, 'error': 'Parsing Error' })
+            
+        except Exception as e:
+            errors.append({ 'symbol': symbol, 'error': 'Internal Error', stack: str(e) })
+
+        time.sleep(5)
+
+    await close_database(db)
+
+    if len(metadata) > 0:
+        with open('metadata.json', 'w') as f:
+            json.dump(metadata, f)
+
+    if len(lower_selected) > 0 or len(upper_selected) > 0:
+        print('Sending email...')
+        send_email(lower_selected, upper_selected)
+    else:
+        print('No stocks reached the threshold')
+
+    if len(errors) > 0:
+        print('[ERROR] Sending debug email...')
+        send_debug_email(errors)
+        print('[FIN] Fail')
+        raise Exception('Error(s) found')
+
+    print('[FIN] Success')
+
+if __name__ == '__main__':
+    asyncio.run(main())

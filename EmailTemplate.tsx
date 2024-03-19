@@ -2,7 +2,7 @@ import React from "react";
 import { Body, Container, Head, Text, Html, Preview, Section, Hr } from "@react-email/components";
 import { Tailwind } from "@react-email/tailwind";
 
-interface Stock {
+export interface Stock {
   code: string;
   currentPrice: number;
   thresholds: {
@@ -16,7 +16,7 @@ interface EmailTemplateProps {
   stocks: Stock[];
 }
 
-export const EmailTemplate =({ name, stocks }: EmailTemplateProps) => {
+export const EmailTemplate = ({ name, stocks }: EmailTemplateProps) => {
   const date = new Date().toLocaleDateString();
 
   return (

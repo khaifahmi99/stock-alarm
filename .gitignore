@@ -8,3 +8,5 @@ pyvenv.cfg
 
 exec.sh
 log.txt
+
+node_modules

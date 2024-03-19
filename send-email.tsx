@@ -16,7 +16,7 @@ async function main() {
 
   try {
     await resend.emails.send({
-      from: "MarketNotification Graphics <app-market-notification@resend.dev>",
+      from: "MarketNotification Summary <app-market-summary@resend.dev>",
       to: RECEPIENT_EMAIL,
       subject: 'Your Stock Summary Today',
       react: <EmailTemplate name="" stocks={stocks} />,

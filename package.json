@@ -2,7 +2,7 @@
   "name": "stock-alarm",
   "version": "1.0.0",
   "scripts": {
-    "email": "tsx send-email.ts",
+    "email": "tsx send-email.tsx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

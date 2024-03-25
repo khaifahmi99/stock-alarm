@@ -1,13 +1,13 @@
 import os
-import requests
 import time
-from bs4 import BeautifulSoup
 import json
 import resend
 from dotenv import load_dotenv
 load_dotenv()
 import asyncio
 from prisma import Prisma
+
+from ticker.api import get_prices
 
 RESEND_API_KEY = os.environ['RESEND_API_KEY']
 PRIMARY_RECEPIENT = os.environ['PRIMARY_RECEPIENT']
@@ -16,31 +16,6 @@ DEBUG_RECEPIENT = os.environ['DEBUG_RECEPIENT']
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
-def parse_price(market, symbol):
-    google_finance_request_url = "https://www.google.com/finance?q={}%3A{}".format(market, symbol)
-    try:
-        open_url = requests.get(google_finance_request_url)
-        get_text = open_url.text
-        soup = BeautifulSoup(get_text, "html.parser")
-        # get the items that describe the stock
-        items = soup.find_all("div", {"class": "gyFHrc"})
-        # create a dictionary to store the stock description
-        stock_description = {}
-        # iterate over the items and append them to the dictionary
-        for item in items:
-            item_description = item.find("div", {"class": "mfs7Fc"}).text
-            item_value = item.find("div", {"class": "P6K39c"}).text
-            stock_description[item_description] = item_value
-        
-        stock_description["current_price"] = soup.find("div", {"class": "fxKbKc"}).text
-
-        cleaned_price = stock_description['current_price'].strip('$')
-        current_price = float(cleaned_price)
-
-        return current_price
-    except Exception as e:
-        print(str(e))
-        print('Error occurred in getting price change. Please ensure the stock symbol entered is correct')
 
 def parse_watchlist():
     file_path = './watchlist.json'
@@ -157,10 +132,13 @@ async def main() -> None:
 
     db = await open_database()
 
+    symbols = [item['symbol'] for item in watchlist]
+    prices = get_prices(symbols)
+
     for item in watchlist:
-        symbol = item['symbol']
+        symbol = item['symbol'].upper()
+        price = prices[symbol]
         try:
-            price = parse_price(item['market'], symbol)
             if price is not None:
                 print(f'[{symbol}] Price: ${price}')
 

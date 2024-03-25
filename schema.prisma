@@ -15,5 +15,12 @@ model Stock {
 
   symbol    String
   price     Float
+
+  strongBuy  Int?
+  buy        Int?
+  hold       Int?
+  sell       Int?
+  strongSell Int?
+  total      Int?
 }
   

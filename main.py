@@ -7,7 +7,7 @@ load_dotenv()
 import asyncio
 from prisma import Prisma
 
-from ticker.api import get_prices
+from ticker.api import get_prices, get_tickers, get_recommendations
 
 RESEND_API_KEY = os.environ['RESEND_API_KEY']
 PRIMARY_RECEPIENT = os.environ['PRIMARY_RECEPIENT']
@@ -92,21 +92,28 @@ async def open_database():
     print('[DB] Connected to database')
     return db
 
-async def save_price(db, symbol, price):
+async def save_ticker(db, symbol, price, recommendations):
     if db is None:
         return None
 
     try:
         await db.stock.create({
             'symbol': symbol,
-            'price': price
+            'price': price,
+
+            'strongBuy': recommendations['strongBuy'],
+            'buy': recommendations['buy'],
+            'hold': recommendations['hold'],
+            'sell': recommendations['sell'],
+            'strongSell': recommendations['strongSell'],
+            'total': recommendations['total'],
         })
     except Exception as e:
         print(str(e))
-        print(f'[DB] Error saving price for [{symbol}] to database')
+        print(f'[DB] Error saving ticker for [{symbol}] to database')
         return False
 
-    print(f'[DB] Saved price for [{symbol}] to database')
+    print(f'[DB] Saved ticker for [{symbol}] to database')
     return True
 
 
@@ -133,16 +140,20 @@ async def main() -> None:
     db = await open_database()
 
     symbols = [item['symbol'] for item in watchlist]
-    prices = get_prices(symbols)
+    tickers = get_tickers(symbols)
+
+    prices = get_prices(tickers)
+    recommendations = get_recommendations(tickers)
 
     for item in watchlist:
         symbol = item['symbol'].upper()
         price = prices[symbol]
+        recommendations = recommendations[symbol]
         try:
             if price is not None:
                 print(f'[{symbol}] Price: ${price}')
 
-                await save_price(db, symbol, price)
+                await save_ticker(db, symbol, price, recommendations)
 
                 upper_thresholds = item['thresholds']['upper']
                 lower_thresholds = item['thresholds']['lower']
@@ -192,6 +203,7 @@ async def main() -> None:
                         'upper': upper_thresholds,
                         'lower': lower_thresholds,
                     }
+                    'recommendations': recommendations
                 })
             else:
                 print(f'[{symbol}] Error occurred in getting price change. Please ensure the stock symbol entered is correct')

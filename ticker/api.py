@@ -1,15 +1,21 @@
 import yfinance as yf
 
 '''
-Retrieve the current price of the tickers.
-This is done by using yfinance
-The response will be a dict of ticker_code/current_price
+Retrieve the tickers object.
+This is based on the yfinance library
 '''
-def get_prices(symbols: list[str]) -> dict:
+def get_tickers(symbols: list[str]):
     tickers_param = ' '.join(symbols).upper()
 
     tickers = yf.Tickers(tickers_param)
 
+    return tickers
+
+'''
+Retrieve the current price of the tickers.
+The response will be a dict of ticker_code/current_price
+'''
+def get_prices(tickers) -> dict:
     response = {}
     for ticker, data in tickers.tickers.items():
         hist = data.history(period='20m', interval='1m')
@@ -20,4 +26,28 @@ def get_prices(symbols: list[str]) -> dict:
 
     return response
 
-    
+def get_recommendations(tickers) -> dict:
+    response = {}
+    for ticker, data in tickers.tickers.items():
+        recommendations = data.recommendations
+
+        strong_buy = recommendations['strongBuy'][0]
+        buy = recommendations['buy'][0]
+        hold = recommendations['hold'][0]
+        sell = recommendations['sell'][0]
+        strong_sell = recommendations['strongSell'][0]
+        
+        total_recommendations = strong_buy + buy + hold + sell + strong_sell
+
+        response[ticker] = {
+            'strongBuy': strong_buy,
+            'buy': buy,
+            'hold': hold,
+            'sell': sell,
+            'strongSell': strong_sell,
+
+            'total': total_recommendations,
+        }
+
+    return response
+

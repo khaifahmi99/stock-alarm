@@ -143,12 +143,13 @@ async def main() -> None:
     tickers = get_tickers(symbols)
 
     prices = get_prices(tickers)
-    recommendations = get_recommendations(tickers)
+    recommendation_list = get_recommendations(tickers)
 
     for item in watchlist:
         symbol = item['symbol'].upper()
         price = prices[symbol]
-        recommendations = recommendations[symbol]
+
+        recommendations = recommendation_list[symbol]
         try:
             if price is not None:
                 print(f'[{symbol}] Price: ${price}')

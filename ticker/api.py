@@ -31,11 +31,11 @@ def get_recommendations(tickers) -> dict:
     for ticker, data in tickers.tickers.items():
         recommendations = data.recommendations
 
-        strong_buy = recommendations['strongBuy'][0]
-        buy = recommendations['buy'][0]
-        hold = recommendations['hold'][0]
-        sell = recommendations['sell'][0]
-        strong_sell = recommendations['strongSell'][0]
+        strong_buy = int(recommendations['strongBuy'][0])
+        buy = int(recommendations['buy'][0])
+        hold = int(recommendations['hold'][0])
+        sell = int(recommendations['sell'][0])
+        strong_sell = int(recommendations['strongSell'][0])
         
         total_recommendations = strong_buy + buy + hold + sell + strong_sell
 

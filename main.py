@@ -202,7 +202,7 @@ async def main() -> None:
                     'thresholds': {
                         'upper': upper_thresholds,
                         'lower': lower_thresholds,
-                    }
+                    },
                     'recommendations': recommendations
                 })
             else:

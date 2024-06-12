@@ -18,9 +18,10 @@
 			"symbol": "AMD",
 			"thresholds": {
 				"lower": [
-					125
+					125,
+					150
 				],
-				"upper": []
+				"upper": [180]
 			}
 		},
 		{
@@ -39,7 +40,8 @@
 			"thresholds": {
 				"lower": [
 					55,
-					100
+					100,
+					120
 				],
 				"upper": [200]
 			}
@@ -60,7 +62,8 @@
 			"thresholds": {
 				"lower": [
 					150,
-					160
+					160,
+					180
 				],
 				"upper": [300]
 			}
@@ -81,9 +84,10 @@
 			"thresholds": {
 				"lower": [
 					400,
-					430
+					430,
+					480
 				],
-				"upper": []
+				"upper": [600]
 			}
 		},
 		{
@@ -92,7 +96,8 @@
 			"thresholds": {
 				"lower": [
 					350,
-					380
+					380,
+					400
 				],
 				"upper": [500]
 			}
@@ -102,9 +107,9 @@
 			"symbol": "NFLX",
 			"thresholds": {
 				"lower": [
-					480
+					600
 				],
-				"upper": []
+				"upper": [700]
 			}
 		},
 		{
@@ -112,10 +117,10 @@
 			"symbol": "NVDA",
 			"thresholds": {
 				"lower": [
-					550,
-					650
+					100,
+					80
 				],
-				"upper": [800]
+				"upper": [150]
 			}
 		},
 		{
@@ -123,10 +128,10 @@
 			"symbol": "TSLA",
 			"thresholds": {
 				"lower": [
-					160,
-					180
+					160
 				],
 				"upper": [
+					230,
 					300
 				]
 			}
@@ -161,7 +166,8 @@
 			"symbol": "TSM",
 			"thresholds": {
 				"lower": [
-					100
+					100,
+					150
 				],
 				"upper": [
 					200

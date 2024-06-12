@@ -3,9 +3,14 @@ run-name: "Validating Watchlist File"
 on: 
   push:
   workflow_dispatch:
+  workflow_call:
+    inputs:
+      trigger:
+        required: true
+        type: boolean
 
 jobs:
-  validate-json:
+  Validate-Json:
     name: "Validate Watchlist JSON"
     runs-on: ubuntu-latest
     steps:

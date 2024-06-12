@@ -7,7 +7,14 @@ on:
   workflow_dispatch:
 
 jobs:
+  Call-Pre-Workflow:
+    uses: ./.github/workflows/watchlist-validator.yaml
+    with:
+      trigger: true
+    runs-on: ubuntu-latest
+
   US-Market-Check-Action:
+    needs: Call-Pre-Workflow
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

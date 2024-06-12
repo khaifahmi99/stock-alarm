@@ -24,7 +24,7 @@ jobs:
         run: echo "The start time is $(date)"
 
       - name: Install Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
@@ -45,10 +45,11 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }} 
 
       - name: Save artefact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: metadata
           path: metadata.json
+          overwrite: true
 
       - name: Set up node.js
         uses: actions/setup-node@v4

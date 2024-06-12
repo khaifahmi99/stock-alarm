@@ -14,6 +14,6 @@ jobs:
       - name: json-yaml-validate
         uses: GrantBirki/json-yaml-validate@v3.0.0
         with:
-          json_schema: schemas/schema.json
+          json_schema: schema/schema.json
           files: |
             watchlist.json

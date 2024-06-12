@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "watchlist": { 
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "market": { "type": "string" },
+          "symbol": { "type": "string" },
+          "thresholds": { 
+            "type": "object",
+            "properties": {
+              "lower": { "type": "array", "items": { "type": "number" } },
+              "upper": { "type": "array", "items": { "type": "number" } }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "watchlist"
+  ],
+  "additionalProperties": false
+}

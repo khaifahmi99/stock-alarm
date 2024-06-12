@@ -1,0 +1,19 @@
+name: "Watchlist Validator"
+run-name: "Validating Watchlist File"
+on: 
+  push:
+  workflow_dispatch:
+
+jobs:
+  validate-json:
+    name: "Validate Watchlist JSON"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: json-yaml-validate
+        uses: GrantBirki/json-yaml-validate@v3.0.0
+        with:
+          json_schema: schemas/schema.json
+          files: |
+            watchlist.json

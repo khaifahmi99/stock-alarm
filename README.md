@@ -36,7 +36,7 @@ pip install -r requirements.txt
 cp example.env .env
 ``` 
 
-4. Customize your watchlist and threshold. Edit the `./watchlist.json` file
+4. Customize your watchlist and threshold. Edit the `./watchlist-us.json` file
 5. Run the script, it will send you an email if the prices reached the threshold set
 ```bash
 python3 main.py

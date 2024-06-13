@@ -21,4 +21,4 @@ jobs:
         with:
           json_schema: schema/schema.json
           files: |
-            watchlist.json
+            watchlist-us.json

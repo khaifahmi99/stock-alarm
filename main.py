@@ -18,7 +18,7 @@ DATABASE_URL = os.environ['DATABASE_URL']
 
 
 def parse_watchlist():
-    file_path = './watchlist.json'
+    file_path = './watchlist-us.json'
     with open(file_path) as f:
         data = json.load(f)
         

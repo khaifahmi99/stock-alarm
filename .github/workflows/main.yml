@@ -37,7 +37,7 @@ jobs:
           prisma generate
 
       - name: Run script 
-        run: python main.py # this will outputs a new file (metadata.json)
+        run: python main.py watchlist-us.json # this will outputs a new file (metadata.json)
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }} 
           PRIMARY_RECEPIENT: ${{ vars.PRIMARY_RECEPIENT }}

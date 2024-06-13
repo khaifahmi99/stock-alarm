@@ -1,9 +1,9 @@
-name: Main US
-run-name: Market (US) Check 🚀
+name: Main AU
+run-name: Market (AU) Check 🚀
 on:
   schedule:
-    # 1 hour after the US market opens (UTC)
-    - cron:  '30 14 * * 1-5'
+  # 02:30am (UTC)
+    - cron:  '30 2 * * 1-5'
   workflow_dispatch:
 
 jobs:
@@ -37,7 +37,7 @@ jobs:
           prisma generate
 
       - name: Run script 
-        run: python main.py watchlist-us.json # this will outputs a new file (metadata.json)
+        run: python main.py watchlist-au.json # this will outputs a new file (metadata.json)
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }} 
           PRIMARY_RECEPIENT: ${{ vars.PRIMARY_RECEPIENT }}

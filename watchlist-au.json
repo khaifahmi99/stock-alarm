@@ -1,0 +1,345 @@
+{
+	"watchlist": [
+		{
+			"market": "ASX",
+			"symbol": "SQ2.AX",
+			"thresholds": {
+				"lower": [
+					95,
+					100
+				],
+				"upper": [
+					120,
+					130
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "NXT.AX",
+			"thresholds": {
+				"lower": [
+					17,
+					17.5
+				],
+				"upper": [
+					20
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "RBTZ.AX",
+			"thresholds": {
+				"lower": [
+					14
+				],
+				"upper": [
+					15,
+					17.5
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "CLDD.AX",
+			"thresholds": {
+				"lower": [
+					11,
+					11.5,
+					12
+				],
+				"upper": [
+					13,
+					14
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "SEMI.AX",
+			"thresholds": {
+				"lower": [
+					18
+				],
+				"upper": [
+					20,
+					25
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "ACDC.AX",
+			"thresholds": {
+				"lower": [
+					85,
+					90
+				],
+				"upper": [
+					100,
+					120
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "IJP.AX",
+			"thresholds": {
+				"lower": [
+					95,
+					100
+				],
+				"upper": [
+					120,
+					130
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "NDQ.AX",
+			"thresholds": {
+				"lower": [
+					43,
+					44
+				],
+				"upper": [
+					46
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "CBA.AX",
+			"thresholds": {
+				"lower": [
+					100,
+					110,
+					112,
+					115
+				],
+				"upper": [
+					130,
+					150
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "TCL.AX",
+			"thresholds": {
+				"lower": [
+					12
+				],
+				"upper": [
+					15
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "TLS.AX",
+			"thresholds": {
+				"lower": [
+					3.5,
+					3.75,
+					4
+				],
+				"upper": [
+					4.2,
+					4.5
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "SPK.AX",
+			"thresholds": {
+				"lower": [
+					3.7,
+					3.8
+				],
+				"upper": [
+					4.5
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "WOW.AX",
+			"thresholds": {
+				"lower": [
+					30
+				],
+				"upper": [
+					35,
+					38,
+					40
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "FANG.AX",
+			"thresholds": {
+				"lower": [
+					22,
+					24,
+					25.5
+				],
+				"upper": [
+					30,
+					35
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "BHP.AX",
+			"thresholds": {
+				"lower": [
+					40
+				],
+				"upper": [
+					46,
+					48,
+					50
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "DMP.AX",
+			"thresholds": {
+				"lower": [
+					35,
+					40
+				],
+				"upper": [
+					45,
+					50
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "CSL.AX",
+			"thresholds": {
+				"lower": [
+					250
+				],
+				"upper": [
+					300,
+					325
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "LOV.AX",
+			"thresholds": {
+				"lower": [
+					25,
+					28
+				],
+				"upper": [
+					35
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "QAN.AX",
+			"thresholds": {
+				"lower": [
+					5.2,
+					5.5,
+					5.8
+				],
+				"upper": [
+					6.5,
+					7
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "CAR.AX",
+			"thresholds": {
+				"lower": [
+					30,
+					32
+				],
+				"upper": [
+					40
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "SEK.AX",
+			"thresholds": {
+				"lower": [
+					20,
+					22
+				],
+				"upper": [
+					25,
+					28,
+					30
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "XRO.AX",
+			"thresholds": {
+				"lower": [
+					100
+				],
+				"upper": [
+					150
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "REA.AX",
+			"thresholds": {
+				"lower": [
+					180
+				],
+				"upper": [
+					120
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "CPU.AX",
+			"thresholds": {
+				"lower": [
+					26,
+					26.5
+				],
+				"upper": [
+					30
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "WES.AX",
+			"thresholds": {
+				"lower": [
+					65,
+					66
+				],
+				"upper": [
+					70
+				]
+			}
+		}
+	]
+}

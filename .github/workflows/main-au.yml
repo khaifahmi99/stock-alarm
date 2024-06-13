@@ -13,7 +13,7 @@ jobs:
       trigger: true
     runs-on: ubuntu-latest
 
-  US-Market-Check-Action:
+  AU-Market-Check-Action:
     needs: Call-Pre-Workflow
     runs-on: ubuntu-latest
     steps:

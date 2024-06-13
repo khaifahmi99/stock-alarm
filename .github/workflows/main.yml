@@ -8,7 +8,7 @@ on:
 
 jobs:
   Call-Pre-Workflow:
-    uses: ./.github/workflows/watchlist-validator.yaml
+    uses: ./.github/workflows/watchlist-validator.yml
     with:
       trigger: true
     runs-on: ubuntu-latest

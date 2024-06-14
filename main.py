@@ -167,81 +167,81 @@ async def main(file_path, skip = False) -> None:
 
     db = await open_database(skip = skip)
     symbols = [item['symbol'] for item in watchlist]
-    if not skip:
-        tickers = get_tickers(symbols)
 
-        prices = get_prices(tickers)
-        recommendation_list = get_recommendations(tickers)
+    tickers = get_tickers(symbols)
 
-        for item in watchlist:
-            symbol = item['symbol'].upper()
-            price = prices[symbol]
+    prices = get_prices(tickers)
+    recommendation_list = get_recommendations(tickers)
 
-            recommendations = recommendation_list[symbol]
-            try:
-                if price is not None:
-                    print(f'[{symbol}] Price: ${price}')
+    for item in watchlist:
+        symbol = item['symbol'].upper()
+        price = prices[symbol]
 
-                    await save_ticker(db, symbol, price, recommendations, skip = skip)
+        recommendations = recommendation_list[symbol]
+        try:
+            if price is not None:
+                print(f'[{symbol}] Price: ${price}')
 
-                    upper_thresholds = item['thresholds']['upper']
-                    lower_thresholds = item['thresholds']['lower']
-                    
-                    print(f'[{symbol} (${price})] Checking price change (lower)')
-                    lower_threshold_count = len(lower_thresholds)
-                    if lower_threshold_count > 0:
-                        threshold_reached = []
-                        for threshold in lower_thresholds:
-                            if price <= threshold:
-                                print(f'Price has dropped below threshold (${threshold})')
-                                threshold_reached.append(threshold)
-                            else:
-                                print(f'Above threshold (${threshold}), ignoring...')
-                        if len(threshold_reached) > 0:
-                            lower_selected.append({
-                                'symbol': symbol,
-                                'price': price,
-                                'thresholds_reached': threshold_reached,
-                                'thresholds_configured': lower_thresholds,
-                            })
+                await save_ticker(db, symbol, price, recommendations, skip = skip)
 
-                    print(f'[{symbol} (${price})] Checking price change (upper)')
-                    upper_threshold_count = len(upper_thresholds)
-                    if len(upper_thresholds) > 0:
-                        threshold_reached = []
-                        for threshold in upper_thresholds:
-                            if price >= threshold:
-                                print(f'Price has risen above threshold (${threshold})')
-                                threshold_reached.append(threshold)
-                            else:
-                                print(f'Below threshold (${threshold}), ignoring...')
-                        if len(threshold_reached) > 0:
-                            upper_selected.append({
-                                'symbol': symbol,
-                                'price': price,
-                                'thresholds_reached': threshold_reached,
-                                'thresholds_configured': upper_thresholds,
-                            })
-
-                    print('---------------------------------------------------------------')
-
-                    metadata.append({
-                        'code': symbol,
-                        'currentPrice': price,
-                        'thresholds': {
-                            'upper': upper_thresholds,
-                            'lower': lower_thresholds,
-                        },
-                        'recommendations': recommendations
-                    })
-                else:
-                    print(f'[{symbol}] Error occurred in getting price change. Please ensure the stock symbol entered is correct')
-                    errors.append({ 'symbol': symbol, 'error': 'Parsing Error' })
+                upper_thresholds = item['thresholds']['upper']
+                lower_thresholds = item['thresholds']['lower']
                 
-            except Exception as e:
-                errors.append({ 'symbol': symbol, 'error': 'Internal Error', stack: str(e) })
+                print(f'[{symbol} (${price})] Checking price change (lower)')
+                lower_threshold_count = len(lower_thresholds)
+                if lower_threshold_count > 0:
+                    threshold_reached = []
+                    for threshold in lower_thresholds:
+                        if price <= threshold:
+                            print(f'Price has dropped below threshold (${threshold})')
+                            threshold_reached.append(threshold)
+                        else:
+                            print(f'Above threshold (${threshold}), ignoring...')
+                    if len(threshold_reached) > 0:
+                        lower_selected.append({
+                            'symbol': symbol,
+                            'price': price,
+                            'thresholds_reached': threshold_reached,
+                            'thresholds_configured': lower_thresholds,
+                        })
 
-            time.sleep(5)
+                print(f'[{symbol} (${price})] Checking price change (upper)')
+                upper_threshold_count = len(upper_thresholds)
+                if len(upper_thresholds) > 0:
+                    threshold_reached = []
+                    for threshold in upper_thresholds:
+                        if price >= threshold:
+                            print(f'Price has risen above threshold (${threshold})')
+                            threshold_reached.append(threshold)
+                        else:
+                            print(f'Below threshold (${threshold}), ignoring...')
+                    if len(threshold_reached) > 0:
+                        upper_selected.append({
+                            'symbol': symbol,
+                            'price': price,
+                            'thresholds_reached': threshold_reached,
+                            'thresholds_configured': upper_thresholds,
+                        })
+
+                print('---------------------------------------------------------------')
+
+                metadata.append({
+                    'code': symbol,
+                    'currentPrice': price,
+                    'thresholds': {
+                        'upper': upper_thresholds,
+                        'lower': lower_thresholds,
+                    },
+                    'recommendations': recommendations
+                })
+            else:
+                print(f'[{symbol}] Error occurred in getting price change. Please ensure the stock symbol entered is correct')
+                errors.append({ 'symbol': symbol, 'error': 'Parsing Error' })
+            
+        except Exception as e:
+            errors.append({ 'symbol': symbol, 'error': 'Internal Error', stack: str(e) })
+
+        time.sleep(5)
 
     await close_database(db, skip = skip)
 

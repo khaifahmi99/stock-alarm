@@ -27,6 +27,24 @@ def get_prices(tickers) -> dict:
 
     return response
 
+'''
+Retrieve the percentage change of the tickers.
+The response will be a dict of ticker_code/percentage_change
+Valid range: 0-1
+'''
+def get_percentage_change(tickers) -> dict:
+    response = {}
+    for ticker, data in tickers.tickers.items():
+        print(f"[DEBUG]: Retrieving price difference for {ticker}")
+        hist = data.history(period='5d', interval='1d')
+        current_price = hist['Close'].iloc[-1]
+        previous_price = hist['Close'].iloc[-2]
+
+        diff = (current_price - previous_price) / previous_price
+        response[ticker] = diff
+
+    return response
+
 def get_recommendations(tickers) -> dict:
     response = {}
     for ticker, data in tickers.tickers.items():

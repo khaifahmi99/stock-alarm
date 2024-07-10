@@ -8,7 +8,7 @@ import asyncio
 from prisma import Prisma
 import argparse
 
-from ticker.api import get_prices, get_tickers, get_recommendations
+from ticker.api import get_prices, get_tickers, get_recommendations, get_percentage_change
 
 RESEND_API_KEY = os.environ['RESEND_API_KEY']
 PRIMARY_RECEPIENT = os.environ['PRIMARY_RECEPIENT']
@@ -108,7 +108,7 @@ async def open_database(skip = False):
     print('[DB] Connected to database')
     return db
 
-async def save_ticker(db, symbol, price, recommendations, skip = False):
+async def save_ticker(db, symbol, price, recommendations, percentage_change, skip = False):
     if skip:
         print('[DEBUG] Skipping save_ticker(skip = True)')
         return None
@@ -120,6 +120,7 @@ async def save_ticker(db, symbol, price, recommendations, skip = False):
         await db.stock.create({
             'symbol': symbol,
             'price': price,
+            'percentageChange': percentage_change,
 
             'strongBuy': recommendations['strongBuy'],
             'buy': recommendations['buy'],
@@ -172,17 +173,19 @@ async def main(file_path, skip = False) -> None:
 
     prices = get_prices(tickers)
     recommendation_list = get_recommendations(tickers)
+    percentage_changes = get_percentage_change(tickers)
 
     for item in watchlist:
         symbol = item['symbol'].upper()
         price = prices[symbol]
+        percentage_change = percentage_changes[symbol]
 
         recommendations = recommendation_list[symbol]
         try:
             if price is not None:
-                print(f'[{symbol}] Price: ${price}')
+                print(f'[{symbol}] Price: ${price}, Change (%): ${percentage_change}')
 
-                await save_ticker(db, symbol, price, recommendations, skip = skip)
+                await save_ticker(db, symbol, price, recommendations, percentage_change, skip = skip)
 
                 upper_thresholds = item['thresholds']['upper']
                 lower_thresholds = item['thresholds']['lower']

@@ -241,7 +241,8 @@
 			"thresholds": {
 				"lower": [
 					25,
-					28
+					28,
+					30
 				],
 				"upper": [
 					35
@@ -338,6 +339,73 @@
 				],
 				"upper": [
 					70
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "KGN.AX",
+			"thresholds": {
+				"lower": [
+					4
+				],
+				"upper": [
+					5
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "ORG.AX",
+			"thresholds": {
+				"lower": [
+					10,
+					10.25
+				],
+				"upper": [
+					11
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "ABB.AX",
+			"thresholds": {
+				"lower": [
+					3
+				],
+				"upper": [
+					4
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "HGEN.AX",
+			"thresholds": {
+				"lower": [
+					4.75,
+					5
+				],
+				"upper": [
+					6
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "RIO.AX",
+			"thresholds": {
+				"lower": [
+					100,
+					110,
+					115,
+					120
+				],
+				"upper": [
+					130,
+					135,
+					140
 				]
 			}
 		}

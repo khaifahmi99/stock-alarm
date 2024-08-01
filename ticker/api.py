@@ -26,6 +26,7 @@ def get_prices(tickers) -> dict:
         current_price = hist['Close'].iloc[-1]
         current_price = round(current_price, 2)
         response[ticker] = current_price
+        print(f"[DEBUG]:    ${current_price}")
 
     return response
 

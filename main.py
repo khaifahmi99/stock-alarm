@@ -183,7 +183,7 @@ async def main(file_path, skip = False) -> None:
         recommendations = recommendation_list[symbol]
         try:
             if price is not None:
-                print(f'[{symbol}] Price: ${price}, Change (%): ${percentage_change}')
+                print(f'[{symbol}] Price: ${price}, Change (%): {percentage_change * 100}')
 
                 await save_ticker(db, symbol, price, recommendations, percentage_change, skip = skip)
 

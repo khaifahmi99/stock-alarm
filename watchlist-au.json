@@ -19,8 +19,8 @@
 			"symbol": "NXT.AX",
 			"thresholds": {
 				"lower": [
-					17,
-					17.5
+					16.5,
+					17
 				],
 				"upper": [
 					20
@@ -32,6 +32,7 @@
 			"symbol": "RBTZ.AX",
 			"thresholds": {
 				"lower": [
+					13,
 					14
 				],
 				"upper": [
@@ -60,7 +61,8 @@
 			"symbol": "SEMI.AX",
 			"thresholds": {
 				"lower": [
-					18
+					16,
+					16.75
 				],
 				"upper": [
 					20,
@@ -73,8 +75,8 @@
 			"symbol": "ACDC.AX",
 			"thresholds": {
 				"lower": [
-					85,
-					90
+					80,
+					85
 				],
 				"upper": [
 					100,
@@ -309,10 +311,10 @@
 			"symbol": "REA.AX",
 			"thresholds": {
 				"lower": [
-					180
+					185
 				],
 				"upper": [
-					200
+					220
 				]
 			}
 		},

@@ -20,8 +20,10 @@ def get_prices(tickers) -> dict:
     for ticker, data in tickers.tickers.items():
         print(f"[DEBUG]: Retrieving price for {ticker}")
         hist = data.history(period='1d', interval='1m')
-        current_price = hist['Close'].iloc[-1]
+        if len(hist) == 0:
+            continue
 
+        current_price = hist['Close'].iloc[-1]
         current_price = round(current_price, 2)
         response[ticker] = current_price
 
@@ -37,6 +39,9 @@ def get_percentage_change(tickers) -> dict:
     for ticker, data in tickers.tickers.items():
         print(f"[DEBUG]: Retrieving price difference for {ticker}")
         hist = data.history(period='5d', interval='1d')
+        if len(hist) < 2:
+            continue
+
         current_price = hist['Close'].iloc[-1]
         previous_price = hist['Close'].iloc[-2]
 

@@ -20,7 +20,7 @@
 			"thresholds": {
 				"lower": [
 					125,
-					150
+					130
 				],
 				"upper": [180]
 			}
@@ -30,7 +30,6 @@
 			"symbol": "AMZN",
 			"thresholds": {
 				"lower": [
-					150,
 					175
 				],
 				"upper": [200]
@@ -41,22 +40,10 @@
 			"symbol": "ARM",
 			"thresholds": {
 				"lower": [
-					55,
-					100,
 					120,
-					140
+					130
 				],
 				"upper": [200]
-			}
-		},
-		{
-			"market": "NYSE",
-			"symbol": "DIS",
-			"thresholds": {
-				"lower": [
-					95
-				],
-				"upper": []
 			}
 		},
 		{
@@ -64,9 +51,8 @@
 			"symbol": "DUOL",
 			"thresholds": {
 				"lower": [
-					150,
-					160,
-					180
+					180,
+					200
 				],
 				"upper": [300]
 			}
@@ -77,7 +63,7 @@
 			"thresholds": {
 				"lower": [
 					150,
-					175
+					160
 				],
 				"upper": [200]
 			}
@@ -87,8 +73,6 @@
 			"symbol": "META",
 			"thresholds": {
 				"lower": [
-					400,
-					430,
 					480
 				],
 				"upper": [600]
@@ -99,9 +83,8 @@
 			"symbol": "MSFT",
 			"thresholds": {
 				"lower": [
-					350,
-					380,
-					400
+					400,
+					450
 				],
 				"upper": [500]
 			}
@@ -113,7 +96,7 @@
 				"lower": [
 					600
 				],
-				"upper": [700]
+				"upper": [900]
 			}
 		},
 		{
@@ -121,9 +104,8 @@
 			"symbol": "NVDA",
 			"thresholds": {
 				"lower": [
-					80,
-					100,
-					110
+					130,
+					140
 				],
 				"upper": [150]
 			}
@@ -133,25 +115,10 @@
 			"symbol": "TSLA",
 			"thresholds": {
 				"lower": [
-					160,
-					175
+					200
 				],
 				"upper": [
-					230,
 					300
-				]
-			}
-		},
-		{
-			"market": "NYSE",
-			"symbol": "TWLO",
-			"thresholds": {
-				"lower": [
-					40
-				],
-				"upper": [
-					70,
-					80
 				]
 			}
 		},
@@ -160,24 +127,11 @@
 			"symbol": "PLTR",
 			"thresholds": {
 				"lower": [
-					20,
-					23
+					35,
+					40
 				],
 				"upper": [
-					30
-				]
-			}
-		},
-		{
-			"market": "NYSE",
-			"symbol": "TSM",
-			"thresholds": {
-				"lower": [
-					100,
-					150
-				],
-				"upper": [
-					200
+					70
 				]
 			}
 		},
@@ -223,37 +177,6 @@
 		},
 		{
 			"market": "NASDAQ",
-			"symbol": "INTC",
-			"thresholds": {
-				"lower": [
-					30,
-					32,
-					33
-				],
-				"upper": [
-					40,
-					50
-				]
-			}
-		},
-		{
-			"market": "NYSE",
-			"symbol": "DELL",
-			"thresholds": {
-				"lower": [
-					100,
-					125,
-					130
-					
-				],
-				"upper": [
-					180,
-					200
-				]
-			}
-		},
-		{
-			"market": "NASDAQ",
 			"symbol": "QCOM",
 			"thresholds": {
 				"lower": [
@@ -272,8 +195,6 @@
 			"symbol": "LULU",
 			"thresholds": {
 				"lower": [
-					250,
-					275,
 					300
 				],
 				"upper": [

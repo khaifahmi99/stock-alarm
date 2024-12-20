@@ -2,6 +2,51 @@
 	"watchlist": [
 		{
 			"market": "ASX",
+			"symbol": "FMG.AX",
+			"thresholds": {
+				"lower": [
+					15,
+					16.5
+				],
+				"upper": [
+					25,
+					30
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "WDS.AX",
+			"thresholds": {
+				"lower": [
+					20,
+					23,
+					24
+				],
+				"upper": [
+					30,
+					40
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "NAB.AX",
+			"thresholds": {
+				"lower": [
+					33,
+					35,
+					36,
+					48
+				],
+				"upper": [
+					45,
+					50
+				]
+			}
+		},
+		{
+			"market": "ASX",
 			"symbol": "SQ2.AX",
 			"thresholds": {
 				"lower": [
@@ -10,7 +55,8 @@
 				],
 				"upper": [
 					120,
-					130
+					130,
+					150
 				]
 			}
 		},
@@ -19,8 +65,9 @@
 			"symbol": "NXT.AX",
 			"thresholds": {
 				"lower": [
-					16.5,
-					17
+					14.0
+					15.0,
+					15.5
 				],
 				"upper": [
 					20
@@ -48,11 +95,12 @@
 				"lower": [
 					11,
 					11.5,
-					12
+					12,
+					14
 				],
 				"upper": [
-					13,
-					14
+					15,
+					17.5
 				]
 			}
 		},
@@ -103,11 +151,12 @@
 			"symbol": "NDQ.AX",
 			"thresholds": {
 				"lower": [
-					43,
-					44
+					48,
+					50
 				],
 				"upper": [
-					46
+					55,
+					60
 				]
 			}
 		},
@@ -119,11 +168,13 @@
 					100,
 					110,
 					112,
-					115
+					115,
+					130
 				],
 				"upper": [
-					130,
-					150
+					145,
+					150,
+					175
 				]
 			}
 		},
@@ -159,8 +210,8 @@
 			"symbol": "SPK.AX",
 			"thresholds": {
 				"lower": [
-					3.7,
-					3.8
+					2.5,
+					2.6
 				],
 				"upper": [
 					4.5
@@ -186,9 +237,9 @@
 			"symbol": "FANG.AX",
 			"thresholds": {
 				"lower": [
-					22,
 					24,
-					25.5
+					25.5,
+					28
 				],
 				"upper": [
 					30,
@@ -201,6 +252,7 @@
 			"symbol": "BHP.AX",
 			"thresholds": {
 				"lower": [
+					37.5,
 					40
 				],
 				"upper": [
@@ -215,8 +267,7 @@
 			"symbol": "DMP.AX",
 			"thresholds": {
 				"lower": [
-					35,
-					40
+					30
 				],
 				"upper": [
 					45,
@@ -271,8 +322,8 @@
 			"symbol": "CAR.AX",
 			"thresholds": {
 				"lower": [
-					30,
-					32
+					35,
+					37
 				],
 				"upper": [
 					40
@@ -299,10 +350,11 @@
 			"symbol": "XRO.AX",
 			"thresholds": {
 				"lower": [
-					100
+					120,
+					150
 				],
 				"upper": [
-					150
+					200
 				]
 			}
 		},
@@ -311,10 +363,12 @@
 			"symbol": "REA.AX",
 			"thresholds": {
 				"lower": [
-					185
+					200,
+					230
 				],
 				"upper": [
-					220
+					250,
+					270
 				]
 			}
 		},
@@ -323,11 +377,12 @@
 			"symbol": "CPU.AX",
 			"thresholds": {
 				"lower": [
-					26,
-					26.5
+					28,
+					30,
+					32
 				],
 				"upper": [
-					30
+					35
 				]
 			}
 		},
@@ -336,11 +391,11 @@
 			"symbol": "WES.AX",
 			"thresholds": {
 				"lower": [
-					65,
-					66
+					68,
+					70
 				],
 				"upper": [
-					70
+					80
 				]
 			}
 		},
@@ -349,10 +404,12 @@
 			"symbol": "KGN.AX",
 			"thresholds": {
 				"lower": [
-					4
+					4,
+					4.5,
+					5
 				],
 				"upper": [
-					5
+					8
 				]
 			}
 		},
@@ -386,8 +443,8 @@
 			"symbol": "HGEN.AX",
 			"thresholds": {
 				"lower": [
-					4.75,
-					5
+					4.5,
+					4.75
 				],
 				"upper": [
 					6

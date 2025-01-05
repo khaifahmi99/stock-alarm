@@ -2,6 +2,32 @@
 	"watchlist": [
 		{
 			"market": "NASDAQ",
+			"symbol": "MNDY",
+			"thresholds": {
+				"lower": [
+					200,
+					230
+				],
+				"upper": [
+					300,
+					350
+				]
+			}
+		},
+		{
+			"market": "NASDAQ",
+			"symbol": "BIDU",
+			"thresholds": {
+				"lower": [
+					80
+				],
+				"upper": [
+					85
+				]
+			}
+		},
+		{
+			"market": "NASDAQ",
 			"symbol": "DXYZ",
 			"thresholds": {
 				"lower": [

@@ -2,6 +2,31 @@
 	"watchlist": [
 		{
 			"market": "NASDAQ",
+			"symbol": "DXYZ",
+			"thresholds": {
+				"lower": [
+					50
+				],
+				"upper": [
+					80
+				]
+			}
+		},
+		{
+			"market": "NASDAQ",
+			"symbol": "RKLB",
+			"thresholds": {
+				"lower": [
+					20,
+					25
+				],
+				"upper": [
+					35
+				]
+			}
+		},
+		{
+			"market": "NASDAQ",
 			"symbol": "AAPL",
 			"thresholds": {
 				"lower": [
@@ -94,9 +119,9 @@
 			"symbol": "NFLX",
 			"thresholds": {
 				"lower": [
-					600
+					800
 				],
-				"upper": [900]
+				"upper": [1000]
 			}
 		},
 		{

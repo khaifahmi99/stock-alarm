@@ -19,6 +19,7 @@
 			"symbol": "BIDU",
 			"thresholds": {
 				"lower": [
+					70,
 					80
 				],
 				"upper": [
@@ -57,10 +58,12 @@
 			"thresholds": {
 				"lower": [
 					175,
-					200
+					200,
+					230
 				],
 				"upper": [
 					250,
+					275,
 					300
 				]
 			}
@@ -70,6 +73,7 @@
 			"symbol": "AMD",
 			"thresholds": {
 				"lower": [
+					110,
 					125,
 					130
 				],
@@ -81,9 +85,9 @@
 			"symbol": "AMZN",
 			"thresholds": {
 				"lower": [
-					175
+					210
 				],
-				"upper": [200]
+				"upper": [250]
 			}
 		},
 		{
@@ -103,9 +107,11 @@
 			"thresholds": {
 				"lower": [
 					180,
-					200
+					200,
+					250,
+					300
 				],
-				"upper": [300]
+				"upper": [400]
 			}
 		},
 		{
@@ -113,10 +119,10 @@
 			"symbol": "GOOGL",
 			"thresholds": {
 				"lower": [
-					150,
-					160
+					175,
+					185
 				],
-				"upper": [200]
+				"upper": [200, 250]
 			}
 		},
 		{
@@ -124,9 +130,10 @@
 			"symbol": "META",
 			"thresholds": {
 				"lower": [
-					480
+					550,
+					600
 				],
-				"upper": [600]
+				"upper": [700]
 			}
 		},
 		{
@@ -166,10 +173,12 @@
 			"symbol": "TSLA",
 			"thresholds": {
 				"lower": [
-					200
+					200,
+					250
 				],
 				"upper": [
-					300
+					300,
+					400
 				]
 			}
 		},
@@ -178,11 +187,12 @@
 			"symbol": "PLTR",
 			"thresholds": {
 				"lower": [
-					35,
-					40
+					55,
+					60
 				],
 				"upper": [
-					70
+					80,
+					100
 				]
 			}
 		},
@@ -228,14 +238,13 @@
 		},
 		{
 			"market": "NASDAQ",
-			"symbol": "QCOM",
+			"symbol": "AVGO",
 			"thresholds": {
 				"lower": [
-					150,
-					175
+					160,
+					200
 				],
 				"upper": [
-					200,
 					250,
 					300
 				]
@@ -252,6 +261,71 @@
 					400,
 					450,
 					500
+				]
+			}
+		},
+		{
+			"market": "NASDAQ",
+			"symbol": "HOOD",
+			"thresholds": {
+				"lower": [
+					30,
+					35,
+					40
+				],
+				"upper": [
+					70,
+					80,
+					100
+				]
+			}
+		},
+		{
+			"market": "NASDAQ",
+			"symbol": "SOFI",
+			"thresholds": {
+				"lower": [
+					11,
+					12,
+					13,
+					14
+				],
+				"upper": [
+					16,
+					17,
+					20
+				]
+			}
+		},
+		{
+			"market": "NYSE",
+			"symbol": "CRM",
+			"thresholds": {
+				"lower": [
+					250,
+					275,
+					300
+				],
+				"upper": [
+					400,
+					450,
+					500
+				]
+			}
+		},
+		{
+			"market": "NYSE",
+			"symbol": "TSM",
+			"thresholds": {
+				"lower": [
+					150,
+					175,
+					200
+				],
+				"upper": [
+					275,
+					300,
+					350
 				]
 			}
 		}

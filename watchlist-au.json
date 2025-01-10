@@ -180,13 +180,30 @@
 		},
 		{
 			"market": "ASX",
-			"symbol": "TCL.AX",
+			"symbol": "NAB.AX",
 			"thresholds": {
 				"lower": [
-					12
+					37,
+					38
 				],
 				"upper": [
-					15
+					43,
+					45,
+					50
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "ANZ.AX",
+			"thresholds": {
+				"lower": [
+					27.5,
+					28
+				],
+				"upper": [
+					30,
+					35
 				]
 			}
 		},
@@ -237,9 +254,9 @@
 			"symbol": "FANG.AX",
 			"thresholds": {
 				"lower": [
-					24,
 					25.5,
-					28
+					28,
+					30
 				],
 				"upper": [
 					35,
@@ -280,7 +297,8 @@
 			"symbol": "CSL.AX",
 			"thresholds": {
 				"lower": [
-					250
+					250,
+					270
 				],
 				"upper": [
 					300,
@@ -307,13 +325,10 @@
 			"symbol": "QAN.AX",
 			"thresholds": {
 				"lower": [
-					5.2,
-					5.5,
-					5.8
+					7
 				],
 				"upper": [
-					6.5,
-					7
+					10
 				]
 			}
 		},
@@ -422,19 +437,8 @@
 					10.25
 				],
 				"upper": [
-					11
-				]
-			}
-		},
-		{
-			"market": "ASX",
-			"symbol": "ABB.AX",
-			"thresholds": {
-				"lower": [
-					3
-				],
-				"upper": [
-					4
+					11,
+					12
 				]
 			}
 		},

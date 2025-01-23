@@ -47,7 +47,7 @@
 		},
 		{
 			"market": "ASX",
-			"symbol": "SQ2.AX",
+			"symbol": "XYZ.AX",
 			"thresholds": {
 				"lower": [
 					95,

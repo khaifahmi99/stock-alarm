@@ -43,27 +43,6 @@ jobs:
           DEBUG_RECEPIENT: ${{ vars.DEBUG_RECEPIENT }} 
           DATABASE_URL: ${{ secrets.DATABASE_URL }} 
 
-      - name: Save artefact
-        uses: actions/upload-artifact@v4
-        with:
-          name: metadata
-          path: metadata.json
-          overwrite: true
-
-      - name: Set up node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install node dependencies
-        run: npm install
-
-      - name: Run script 
-        run: npm run email # this will consume the metadata.json file
-        env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }} 
-          PRIMARY_RECEPIENT: ${{ vars.PRIMARY_RECEPIENT }}
-
       - name: Print end time
         run: echo "The end time is $(date)"
 

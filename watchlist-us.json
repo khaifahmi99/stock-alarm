@@ -23,7 +23,7 @@
 					80
 				],
 				"upper": [
-					85
+					100
 				]
 			}
 		},
@@ -32,7 +32,7 @@
 			"symbol": "DXYZ",
 			"thresholds": {
 				"lower": [
-					50
+					30
 				],
 				"upper": [
 					80
@@ -44,11 +44,11 @@
 			"symbol": "RKLB",
 			"thresholds": {
 				"lower": [
-					20,
-					25
+					15,
+					17.5
 				],
 				"upper": [
-					35
+					30
 				]
 			}
 		},
@@ -73,11 +73,10 @@
 			"symbol": "AMD",
 			"thresholds": {
 				"lower": [
-					110,
-					125,
-					130
+					90,
+					100
 				],
-				"upper": [180]
+				"upper": [150]
 			}
 		},
 		{
@@ -85,6 +84,8 @@
 			"symbol": "AMZN",
 			"thresholds": {
 				"lower": [
+					180,
+					200,
 					210
 				],
 				"upper": [250]
@@ -95,6 +96,7 @@
 			"symbol": "ARM",
 			"thresholds": {
 				"lower": [
+					100,
 					120,
 					130
 				],
@@ -162,8 +164,9 @@
 			"symbol": "NVDA",
 			"thresholds": {
 				"lower": [
-					130,
-					140
+					105,
+					110,
+					120
 				],
 				"upper": [150]
 			}
@@ -187,12 +190,12 @@
 			"symbol": "PLTR",
 			"thresholds": {
 				"lower": [
-					55,
-					60
+					70,
+					80
 				],
 				"upper": [
-					80,
-					100
+					100,
+					120
 				]
 			}
 		},
@@ -326,6 +329,45 @@
 					275,
 					300,
 					350
+				]
+			}
+		},
+		{
+			"market": "NYSE",
+			"symbol": "LLY",
+			"thresholds": {
+				"lower": [
+					800,
+					850
+				],
+				"upper": [
+					1000
+				]
+			}
+		},
+		{
+			"market": "NYSE",
+			"symbol": "LLY",
+			"thresholds": {
+				"lower": [
+					800,
+					850
+				],
+				"upper": [
+					1000
+				]
+			}
+		},
+		{
+			"market": "NYSE",
+			"symbol": "NOW",
+			"thresholds": {
+				"lower": [
+					800,
+					850
+				],
+				"upper": [
+					1000
 				]
 			}
 		}

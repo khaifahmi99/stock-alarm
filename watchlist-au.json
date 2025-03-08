@@ -6,7 +6,7 @@
 			"thresholds": {
 				"lower": [
 					15,
-					16.5
+					16
 				],
 				"upper": [
 					25,
@@ -31,22 +31,6 @@
 		},
 		{
 			"market": "ASX",
-			"symbol": "NAB.AX",
-			"thresholds": {
-				"lower": [
-					33,
-					35,
-					36,
-					38
-				],
-				"upper": [
-					45,
-					50
-				]
-			}
-		},
-		{
-			"market": "ASX",
 			"symbol": "XYZ.AX",
 			"thresholds": {
 				"lower": [
@@ -65,26 +49,12 @@
 			"symbol": "NXT.AX",
 			"thresholds": {
 				"lower": [
-					14.0,
-					15.0,
-					15.5
+					10.0,
+					12.5,
+					15.0
 				],
 				"upper": [
 					20
-				]
-			}
-		},
-		{
-			"market": "ASX",
-			"symbol": "RBTZ.AX",
-			"thresholds": {
-				"lower": [
-					13,
-					14
-				],
-				"upper": [
-					15,
-					17.5
 				]
 			}
 		},
@@ -183,8 +153,8 @@
 			"symbol": "NAB.AX",
 			"thresholds": {
 				"lower": [
-					37,
-					38
+					33,
+					35
 				],
 				"upper": [
 					43,
@@ -227,8 +197,8 @@
 			"symbol": "SPK.AX",
 			"thresholds": {
 				"lower": [
-					2.5,
-					2.6
+					2.0,
+					2.1
 				],
 				"upper": [
 					4.5
@@ -240,6 +210,8 @@
 			"symbol": "WOW.AX",
 			"thresholds": {
 				"lower": [
+					27.5,
+					28,
 					30
 				],
 				"upper": [
@@ -284,7 +256,8 @@
 			"symbol": "DMP.AX",
 			"thresholds": {
 				"lower": [
-					30
+					25,
+					28
 				],
 				"upper": [
 					45,
@@ -298,7 +271,7 @@
 			"thresholds": {
 				"lower": [
 					250,
-					270
+					255
 				],
 				"upper": [
 					300,
@@ -312,7 +285,7 @@
 			"thresholds": {
 				"lower": [
 					25,
-					28,
+					27,
 					30
 				],
 				"upper": [
@@ -379,7 +352,7 @@
 			"thresholds": {
 				"lower": [
 					200,
-					230
+					225
 				],
 				"upper": [
 					250,
@@ -392,12 +365,12 @@
 			"symbol": "CPU.AX",
 			"thresholds": {
 				"lower": [
-					28,
 					30,
-					32
+					32,
+					35
 				],
 				"upper": [
-					35
+					42
 				]
 			}
 		},
@@ -469,6 +442,36 @@
 					130,
 					135,
 					140
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "SIG.AX",
+			"thresholds": {
+				"lower": [
+					2.75,
+					3
+				],
+				"upper": [
+					4.0,
+					4.5,
+					5.0
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "ZIP.AX",
+			"thresholds": {
+				"lower": [
+					2,
+					2.25
+				],
+				"upper": [
+					3.5,
+					4.0,
+					5.0
 				]
 			}
 		}

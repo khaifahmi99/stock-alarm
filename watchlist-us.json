@@ -347,19 +347,6 @@
 		},
 		{
 			"market": "NYSE",
-			"symbol": "LLY",
-			"thresholds": {
-				"lower": [
-					800,
-					850
-				],
-				"upper": [
-					1000
-				]
-			}
-		},
-		{
-			"market": "NYSE",
 			"symbol": "NOW",
 			"thresholds": {
 				"lower": [

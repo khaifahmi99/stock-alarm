@@ -248,7 +248,7 @@
 			"symbol": "LULU",
 			"thresholds": {
 				"lower": [
-					150
+					150,
 					175,
 					200
 				],

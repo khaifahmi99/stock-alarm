@@ -5,6 +5,7 @@
 			"symbol": "MNDY",
 			"thresholds": {
 				"lower": [
+					150,
 					200,
 					230
 				],
@@ -16,22 +17,10 @@
 		},
 		{
 			"market": "NASDAQ",
-			"symbol": "BIDU",
-			"thresholds": {
-				"lower": [
-					70,
-					80
-				],
-				"upper": [
-					100
-				]
-			}
-		},
-		{
-			"market": "NASDAQ",
 			"symbol": "DXYZ",
 			"thresholds": {
 				"lower": [
+					25,
 					30
 				],
 				"upper": [
@@ -44,11 +33,10 @@
 			"symbol": "RKLB",
 			"thresholds": {
 				"lower": [
-					15,
-					17.5
+					40
 				],
 				"upper": [
-					30
+					80
 				]
 			}
 		},
@@ -59,7 +47,7 @@
 				"lower": [
 					175,
 					200,
-					230
+					210
 				],
 				"upper": [
 					250,
@@ -74,9 +62,13 @@
 			"thresholds": {
 				"lower": [
 					90,
-					100
+					100,
+					125
 				],
-				"upper": [150]
+				"upper": [
+					200,
+					250
+				]
 			}
 		},
 		{
@@ -124,7 +116,7 @@
 					175,
 					185
 				],
-				"upper": [200, 250]
+				"upper": [225, 250]
 			}
 		},
 		{
@@ -132,10 +124,10 @@
 			"symbol": "META",
 			"thresholds": {
 				"lower": [
-					550,
-					600
+					650,
+					700
 				],
-				"upper": [700]
+				"upper": [900]
 			}
 		},
 		{
@@ -146,7 +138,7 @@
 					400,
 					450
 				],
-				"upper": [500]
+				"upper": [600]
 			}
 		},
 		{
@@ -154,9 +146,10 @@
 			"symbol": "NFLX",
 			"thresholds": {
 				"lower": [
-					800
+					1000,
+					1100
 				],
-				"upper": [1000]
+				"upper": [1300]
 			}
 		},
 		{
@@ -164,11 +157,11 @@
 			"symbol": "NVDA",
 			"thresholds": {
 				"lower": [
-					105,
-					110,
-					120
+					130,
+					150,
+					165
 				],
-				"upper": [150]
+				"upper": [200]
 			}
 		},
 		{
@@ -190,12 +183,11 @@
 			"symbol": "PLTR",
 			"thresholds": {
 				"lower": [
-					70,
-					80
+					125,
+					150
 				],
 				"upper": [
-					100,
-					120
+					200
 				]
 			}
 		},
@@ -204,12 +196,10 @@
 			"symbol": "ADBE",
 			"thresholds": {
 				"lower": [
-					400,
-					450,
-					500
+					300
 				],
 				"upper": [
-					650
+					500
 				]
 			}
 		},
@@ -218,8 +208,8 @@
 			"symbol": "UBER",
 			"thresholds": {
 				"lower": [
-					60,
-					65
+					70,
+					82
 				],
 				"upper": [
 					100
@@ -231,11 +221,11 @@
 			"symbol": "CRWD",
 			"thresholds": {
 				"lower": [
-					275,
-					300
+					350,
+					380
 				],
 				"upper": [
-					400
+					500
 				]
 			}
 		},
@@ -244,12 +234,12 @@
 			"symbol": "AVGO",
 			"thresholds": {
 				"lower": [
-					160,
+					180,
 					200
 				],
 				"upper": [
-					250,
-					300
+					350,
+					400
 				]
 			}
 		},
@@ -258,12 +248,13 @@
 			"symbol": "LULU",
 			"thresholds": {
 				"lower": [
-					300
+					150
+					175,
+					200
 				],
 				"upper": [
-					400,
-					450,
-					500
+					350,
+					400
 				]
 			}
 		},
@@ -272,14 +263,11 @@
 			"symbol": "HOOD",
 			"thresholds": {
 				"lower": [
-					30,
-					35,
-					40
+					90,
+					100
 				],
 				"upper": [
-					70,
-					80,
-					100
+					150
 				]
 			}
 		},
@@ -288,15 +276,13 @@
 			"symbol": "SOFI",
 			"thresholds": {
 				"lower": [
-					11,
-					12,
-					13,
-					14
+					17,
+					18,
+					20
 				],
 				"upper": [
-					16,
-					17,
-					20
+					25,
+					28
 				]
 			}
 		},
@@ -305,9 +291,9 @@
 			"symbol": "CRM",
 			"thresholds": {
 				"lower": [
-					250,
-					275,
-					300
+					200,
+					225,
+					250
 				],
 				"upper": [
 					400,
@@ -337,6 +323,7 @@
 			"symbol": "LLY",
 			"thresholds": {
 				"lower": [
+					700,
 					800,
 					850
 				],

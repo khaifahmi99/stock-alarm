@@ -6,7 +6,8 @@
 			"thresholds": {
 				"lower": [
 					15,
-					16
+					16,
+					18
 				],
 				"upper": [
 					25,
@@ -35,7 +36,8 @@
 			"thresholds": {
 				"lower": [
 					80,
-					85
+					85,
+					100
 				],
 				"upper": [
 					120,
@@ -62,8 +64,8 @@
 			"symbol": "CLDD.AX",
 			"thresholds": {
 				"lower": [
-					11,
-					11.5
+					11.5,
+					12
 				],
 				"upper": [
 					17,
@@ -76,7 +78,8 @@
 			"symbol": "SEMI.AX",
 			"thresholds": {
 				"lower": [
-					13
+					15,
+					16
 				],
 				"upper": [
 					20,
@@ -93,7 +96,6 @@
 					85
 				],
 				"upper": [
-					100,
 					120
 				]
 			}
@@ -103,11 +105,12 @@
 			"symbol": "IJP.AX",
 			"thresholds": {
 				"lower": [
-					80
+					100,
+					110
 				],
 				"upper": [
-					120,
-					130
+					130,
+					150
 				]
 			}
 		},
@@ -116,11 +119,11 @@
 			"symbol": "NDQ.AX",
 			"thresholds": {
 				"lower": [
-					48,
-					50
+					50,
+					52.5
 				],
 				"upper": [
-					55,
+					58,
 					60
 				]
 			}
@@ -130,13 +133,12 @@
 			"symbol": "CBA.AX",
 			"thresholds": {
 				"lower": [
-					100,
-					130,
-					150
+					150,
+					160
 				],
 				"upper": [
-					180,
-					200
+					200,
+					220
 				]
 			}
 		},
@@ -145,8 +147,8 @@
 			"symbol": "NAB.AX",
 			"thresholds": {
 				"lower": [
-					33,
-					35
+					35,
+					37
 				],
 				"upper": [
 					43,
@@ -161,11 +163,12 @@
 			"thresholds": {
 				"lower": [
 					27.5,
-					28
+					28,
+					30
 				],
 				"upper": [
-					30,
-					35
+					35,
+					37
 				]
 			}
 		},
@@ -176,10 +179,12 @@
 				"lower": [
 					3.5,
 					3.75,
-					4
+					4,
+					4.5
 				],
 				"upper": [
-					5
+					5,
+					5.5
 				]
 			}
 		},
@@ -217,12 +222,12 @@
 			"symbol": "FANG.AX",
 			"thresholds": {
 				"lower": [
-					25.5,
 					28,
-					30
+					30,
+					32
 				],
 				"upper": [
-					35,
+					37,
 					40
 				]
 			}
@@ -247,8 +252,9 @@
 			"symbol": "DMP.AX",
 			"thresholds": {
 				"lower": [
-					23,
-					25
+					15,
+					17.5,
+					20
 				],
 				"upper": [
 					35,
@@ -275,12 +281,13 @@
 			"symbol": "LOV.AX",
 			"thresholds": {
 				"lower": [
-					25,
 					27,
-					28
+					28,
+					30
 				],
 				"upper": [
-					35
+					35,
+					40
 				]
 			}
 		},
@@ -289,10 +296,11 @@
 			"symbol": "QAN.AX",
 			"thresholds": {
 				"lower": [
-					7
+					10,
+					10.5
 				],
 				"upper": [
-					10
+					15
 				]
 			}
 		},
@@ -301,12 +309,12 @@
 			"symbol": "CAR.AX",
 			"thresholds": {
 				"lower": [
-					32,
-					35,
+					36,
 					37
 				],
 				"upper": [
-					40
+					42,
+					45
 				]
 			}
 		},
@@ -330,8 +338,8 @@
 			"symbol": "XRO.AX",
 			"thresholds": {
 				"lower": [
-					120,
-					150
+					150,
+					160
 				],
 				"upper": [
 					200
@@ -344,7 +352,8 @@
 			"thresholds": {
 				"lower": [
 					200,
-					225
+					225,
+					235
 				],
 				"upper": [
 					250,
@@ -357,12 +366,12 @@
 			"symbol": "CPU.AX",
 			"thresholds": {
 				"lower": [
-					30,
-					32,
-					35
+					35,
+					38,
+					40
 				],
 				"upper": [
-					42
+					45
 				]
 			}
 		},
@@ -371,12 +380,11 @@
 			"symbol": "WES.AX",
 			"thresholds": {
 				"lower": [
-					68,
-					70
+					80,
+					85
 				],
 				"upper": [
-					80,
-					90,
+					95,
 					100
 				]
 			}
@@ -386,12 +394,11 @@
 			"symbol": "KGN.AX",
 			"thresholds": {
 				"lower": [
-					4,
-					4.5,
-					5
+					3.8,
+					4
 				],
 				"upper": [
-					8
+					6
 				]
 			}
 		},
@@ -400,12 +407,12 @@
 			"symbol": "ORG.AX",
 			"thresholds": {
 				"lower": [
-					10,
-					10.25
-				],
-				"upper": [
 					11,
 					12
+				],
+				"upper": [
+					13,
+					14
 				]
 			}
 		},
@@ -458,7 +465,8 @@
 			"thresholds": {
 				"lower": [
 					1.8,
-					2
+					2,
+					2.8
 				],
 				"upper": [
 					3.5,

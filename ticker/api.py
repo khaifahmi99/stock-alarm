@@ -51,6 +51,12 @@ def get_percentage_change(tickers) -> dict:
 
     return response
 
+def safe_int(df, column):
+    try:
+        return int(df[column].iloc[0])
+    except (KeyError, IndexError, TypeError, ValueError):
+        return 0
+
 def get_recommendations(tickers) -> dict:
     response = {}
     for ticker, data in tickers.tickers.items():
@@ -58,11 +64,11 @@ def get_recommendations(tickers) -> dict:
         try:
             recommendations = data.recommendations
 
-            strong_buy = int(recommendations['strongBuy'][0])
-            buy = int(recommendations['buy'][0])
-            hold = int(recommendations['hold'][0])
-            sell = int(recommendations['sell'][0])
-            strong_sell = int(recommendations['strongSell'][0])
+            strong_buy  = safe_int(recommendations, 'strongBuy')
+            buy         = safe_int(recommendations, 'buy')
+            hold        = safe_int(recommendations, 'hold')
+            sell        = safe_int(recommendations, 'sell')
+            strong_sell = safe_int(recommendations, 'strongSell')
             
             total_recommendations = strong_buy + buy + hold + sell + strong_sell
 

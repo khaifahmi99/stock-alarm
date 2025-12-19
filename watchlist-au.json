@@ -382,9 +382,9 @@
 			"symbol": "KGN.AX",
 			"thresholds": {
 				"lower": [
-					3.5,
-					3.8,
-					4
+					2.5,
+					2.8,
+					3
 				],
 				"upper": [
 					6

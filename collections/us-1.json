@@ -1,0 +1,103 @@
+{
+  "collection_name": "US Stocks Collection",
+  "owner": "user_1",
+  "last_updated": "2026-01-13T10:00:00Z",
+  "currency": "USD",
+  "stocks": [
+    {
+      "id": 1,
+      "ticker": "PLTR",
+      "shares": 13.7
+    },
+    {
+      "id": 2,
+      "ticker": "QBTS",
+      "shares": 20
+    },
+    {
+      "id": 3,
+      "ticker": "TSLA",
+      "shares": 5.39
+    },
+    {
+      "id": 4,
+      "ticker": "TUYA",
+      "shares": 19
+    },
+    {
+      "id": 5,
+      "ticker": "ADBE",
+      "shares": 0.62
+    },
+    {
+      "id": 6,
+      "ticker": "AMD",
+      "shares": 3.91
+    },
+    {
+      "id": 7,
+      "ticker": "GOOGL",
+      "shares": 4.31
+    },
+    {
+      "id": 8,
+      "ticker": "AMZN",
+      "shares": 1.936
+    },
+    {
+      "id": 9,
+      "ticker": "AAPL",
+      "shares": 4
+    },
+    {
+      "id": 10,
+      "ticker": "ARM",
+      "shares": 3.37
+    },
+    {
+      "id": 11,
+      "ticker": "CRWD",
+      "shares": 1.41
+    },
+    {
+      "id": 12,
+      "ticker": "DUOL",
+      "shares": 4.32
+    },
+    {
+      "id": 13,
+      "ticker": "INTC",
+      "shares": 2.2
+    },
+    {
+      "id": 14,
+      "ticker": "META",
+      "shares": 0.2
+    },
+    {
+      "id": 15,
+      "ticker": "MSFT",
+      "shares": 0.57
+    },
+    {
+      "id": 16,
+      "ticker": "NKE",
+      "shares": 3.17
+    },
+    {
+      "id": 17,
+      "ticker": "NVDA",
+      "shares": 23.65
+    },
+    {
+      "id": 18,
+      "ticker": "HOOD",
+      "shares": 6.26
+    },
+    {
+      "id": 19,
+      "ticker": "SOFI",
+      "shares": 22
+    }
+  ]
+}

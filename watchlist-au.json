@@ -35,9 +35,8 @@
 			"symbol": "XYZ.AX",
 			"thresholds": {
 				"lower": [
-					80,
-					85,
-					100
+					75,
+					85
 				],
 				"upper": [
 					120,
@@ -52,7 +51,7 @@
 			"thresholds": {
 				"lower": [
 					10.0,
-					12.5
+					12.0
 				],
 				"upper": [
 					20
@@ -64,8 +63,7 @@
 			"symbol": "CLDD.AX",
 			"thresholds": {
 				"lower": [
-					11.5,
-					12
+					10
 				],
 				"upper": [
 					17,
@@ -82,7 +80,7 @@
 					18
 				],
 				"upper": [
-					25,
+					28,
 					30
 				]
 			}
@@ -118,8 +116,7 @@
 			"symbol": "NDQ.AX",
 			"thresholds": {
 				"lower": [
-					50,
-					52.5
+					50
 				],
 				"upper": [
 					60,
@@ -151,8 +148,6 @@
 					37
 				],
 				"upper": [
-					43,
-					45,
 					50
 				]
 			}
@@ -189,6 +184,7 @@
 			"symbol": "SPK.AX",
 			"thresholds": {
 				"lower": [
+					1.50,
 					1.75,
 					2.0
 				],
@@ -216,8 +212,7 @@
 				"lower": [
 					25,
 					28,
-					30,
-					32
+					30
 				],
 				"upper": [
 					40,
@@ -233,7 +228,8 @@
 					37.5
 				],
 				"upper": [
-					50
+					50,
+					60
 				]
 			}
 		},
@@ -257,9 +253,8 @@
 			"symbol": "CSL.AX",
 			"thresholds": {
 				"lower": [
-					170,
-					175,
-					180
+					140,
+					150
 				],
 				"upper": [
 					300,
@@ -272,9 +267,8 @@
 			"symbol": "LOV.AX",
 			"thresholds": {
 				"lower": [
-					27,
-					28,
-					30
+					20,
+					22
 				],
 				"upper": [
 					40
@@ -286,9 +280,8 @@
 			"symbol": "QAN.AX",
 			"thresholds": {
 				"lower": [
-					9,
-					10,
-					10.5
+					7.5,
+					8
 				],
 				"upper": [
 					15
@@ -300,7 +293,8 @@
 			"symbol": "CAR.AX",
 			"thresholds": {
 				"lower": [
-					30
+					22,
+					24
 				],
 				"upper": [
 					42,
@@ -313,8 +307,9 @@
 			"symbol": "SEK.AX",
 			"thresholds": {
 				"lower": [
-					20,
-					22
+					15,
+					16,
+					20
 				],
 				"upper": [
 					28,
@@ -327,8 +322,8 @@
 			"symbol": "XRO.AX",
 			"thresholds": {
 				"lower": [
-					100,
-					120
+					74,
+					80
 				],
 				"upper": [
 					200
@@ -340,9 +335,8 @@
 			"symbol": "REA.AX",
 			"thresholds": {
 				"lower": [
-					170,
-					180,
-					200
+					150,
+					175
 				],
 				"upper": [
 					250,
@@ -355,8 +349,8 @@
 			"symbol": "CPU.AX",
 			"thresholds": {
 				"lower": [
-					30,
-					32
+					25,
+					27
 				],
 				"upper": [
 					45
@@ -368,8 +362,8 @@
 			"symbol": "WES.AX",
 			"thresholds": {
 				"lower": [
-					75,
-					80
+					65,
+					70
 				],
 				"upper": [
 					95,
@@ -427,7 +421,9 @@
 					110
 				],
 				"upper": [
-					150
+					150,
+					175,
+					200
 				]
 			}
 		},
@@ -451,9 +447,9 @@
 			"symbol": "ZIP.AX",
 			"thresholds": {
 				"lower": [
+					1.5,
 					1.8,
-					2,
-					2.8
+					2
 				],
 				"upper": [
 					3.5,

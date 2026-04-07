@@ -32,6 +32,26 @@ def parse_watchlist(file_path):
         print(f'[ERROR] Error parsing watchlist: {e}')
         return []
 
+def build_stock_table(items):
+    table = '<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">'
+    table += '<thead><tr><th>Ticker</th><th>Price</th><th>Threshold Cross</th><th>MA50</th><th>MA50 Value</th><th>MA200</th><th>MA200 Value</th></tr></thead>'
+    table += '<tbody>'
+    for item in items:
+        price = item['price']
+        ma50 = item.get('ma50')
+        ma200 = item.get('ma200')
+        ma50_arrow = '&#8679;' if ma50 is not None and price > ma50 else '&#8681;'
+        ma200_arrow = '&#8679;' if ma200 is not None and price > ma200 else '&#8681;'
+        ma50_value = ma50 if ma50 is not None else 'N/A'
+        ma200_value = ma200 if ma200 is not None else 'N/A'
+        threshold_cross = '{}/{}'.format(len(item['thresholds_reached']), len(item['thresholds_configured']))
+        ticker_link = '<a href="https://finance.yahoo.com/quote/{}" target="_blank">{}</a>'.format(item['symbol'], item['symbol'])
+        table += '<tr><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>'.format(
+            ticker_link, price, threshold_cross, ma50_arrow, ma50_value, ma200_arrow, ma200_value
+        )
+    table += '</tbody></table>'
+    return table
+
 def send_email(lower_items, upper_items, skip = False):
     if skip:
         print('[DEBUG] Skipping send_email(skip = True)')
@@ -40,18 +60,12 @@ def send_email(lower_items, upper_items, skip = False):
     body = ''
     if len(lower_items) > 0:
         body += "<p>The following stocks have dropped below the threshold:</p>"
-        body += "<ul>"
-        for item in lower_items:
-            body += "<li>{} ({}) - {}/{} threshold met</li>".format(item['symbol'], item['price'], len(item['thresholds_reached']), len(item['thresholds_configured']))
-        body += "</ul>"
-        body += "</hr>"
+        body += build_stock_table(lower_items)
+        body += "<br />"
     if len(upper_items) > 0:
         body += "<p>These stocks have increased above the threshold:</p>"
-        body += "<ul>"
-        for item in upper_items:
-            body += "<li>{} ({}) - {}/{} threshold met</li>".format(item['symbol'], item['price'], len(item['thresholds_reached']), len(item['thresholds_configured']))
-        body += "</ul>"
-        body += "</hr>"
+        body += build_stock_table(upper_items)
+        body += "<br />"
 
     body += "<br />"
     body += "<br />"
@@ -212,6 +226,8 @@ async def main(file_path, skip = False) -> None:
                             'price': price,
                             'thresholds_reached': threshold_reached,
                             'thresholds_configured': lower_thresholds,
+                            'ma50': ma50,
+                            'ma200': ma200,
                         })
 
                 print(f'[{symbol} (${price})] Checking price change (upper)')

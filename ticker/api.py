@@ -57,6 +57,28 @@ def safe_int(df, column):
     except (KeyError, IndexError, TypeError, ValueError):
         return 0
 
+'''
+Retrieve the 50-day and 200-day moving averages of the tickers.
+The response will be a dict of ticker_code/{'ma50': float, 'ma200': float}
+'''
+def get_moving_averages(tickers) -> dict:
+    response = {}
+    for ticker, data in tickers.tickers.items():
+        print(f"[DEBUG]: Retrieving moving averages for {ticker}")
+        try:
+            hist = data.history(period='1y', interval='1d')
+            closes = hist['Close']
+
+            ma50 = round(float(closes.tail(50).mean()), 2) if len(closes) >= 50 else None
+            ma200 = round(float(closes.tail(200).mean()), 2) if len(closes) >= 200 else None
+
+            response[ticker] = {'ma50': ma50, 'ma200': ma200}
+        except Exception as e:
+            print(f"[ERROR]: Error retrieving moving averages for {ticker}")
+            print(str(e))
+            response[ticker] = {'ma50': None, 'ma200': None}
+    return response
+
 def get_recommendations(tickers) -> dict:
     response = {}
     for ticker, data in tickers.tickers.items():

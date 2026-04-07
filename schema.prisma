@@ -24,5 +24,8 @@ model Stock {
   sell       Int?
   strongSell Int?
   total      Int?
+
+  ma50  Float?
+  ma200 Float?
 }
   

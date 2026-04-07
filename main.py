@@ -45,8 +45,9 @@ def build_stock_table(items):
         ma50_value = ma50 if ma50 is not None else 'N/A'
         ma200_value = ma200 if ma200 is not None else 'N/A'
         threshold_cross = '{}/{}'.format(len(item['thresholds_reached']), len(item['thresholds_configured']))
+        ticker_link = '<a href="https://finance.yahoo.com/quote/{}" target="_blank">{}</a>'.format(item['symbol'], item['symbol'])
         table += '<tr><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>'.format(
-            item['symbol'], price, threshold_cross, ma50_arrow, ma50_value, ma200_arrow, ma200_value
+            ticker_link, price, threshold_cross, ma50_arrow, ma50_value, ma200_arrow, ma200_value
         )
     table += '</tbody></table>'
     return table

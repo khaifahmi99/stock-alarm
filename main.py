@@ -254,6 +254,8 @@ async def main(file_path, skip = False) -> None:
 
     if len(lower_selected) > 0 or len(upper_selected) > 0:
         print('Sending email...')
+        lower_selected.sort(key=lambda x: len(x['thresholds_reached']) / len(x['thresholds_configured']), reverse=True)
+        upper_selected.sort(key=lambda x: len(x['thresholds_reached']) / len(x['thresholds_configured']), reverse=True)
         send_email(lower_selected, upper_selected, skip = skip)
     else:
         print('No stocks reached the threshold')

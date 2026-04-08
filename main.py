@@ -246,6 +246,8 @@ async def main(file_path, skip = False) -> None:
                             'price': price,
                             'thresholds_reached': threshold_reached,
                             'thresholds_configured': upper_thresholds,
+                            'ma50': ma50,
+                            'ma200': ma200,
                         })
 
                 print('---------------------------------------------------------------')

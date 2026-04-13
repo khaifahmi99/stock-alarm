@@ -40,8 +40,8 @@ def build_stock_table(items):
         price = item['price']
         ma50 = item.get('ma50')
         ma200 = item.get('ma200')
-        ma50_arrow = '&#8679;' if ma50 is not None and price > ma50 else '&#8681;'
-        ma200_arrow = '&#8679;' if ma200 is not None and price > ma200 else '&#8681;'
+        ma50_arrow = '🔼' if ma50 is not None and price > ma50 else '🔻'
+        ma200_arrow = '🔼' if ma200 is not None and price > ma200 else '🔻'
         ma50_value = ma50 if ma50 is not None else 'N/A'
         ma200_value = ma200 if ma200 is not None else 'N/A'
         threshold_cross = '{}/{}'.format(len(item['thresholds_reached']), len(item['thresholds_configured']))

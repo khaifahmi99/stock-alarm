@@ -89,7 +89,15 @@ def get_valuation_measures(tickers) -> dict:
     for ticker, data in tickers.tickers.items():
         print(f"[DEBUG]: Retrieving valuation measures for {ticker}")
         try:
-            current = (data.valuation or {}).get('Current') or {}
+            valuation = data.valuation
+            if valuation is None or valuation.empty:
+                current = {}
+            elif 'Current' in valuation.columns:
+                current = valuation['Current'].to_dict()
+            elif 'Current' in valuation.index:
+                current = valuation.loc['Current'].to_dict()
+            else:
+                current = {}
 
             def safe_val(key):
                 v = current.get(key)

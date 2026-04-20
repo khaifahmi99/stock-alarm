@@ -32,6 +32,15 @@ def parse_watchlist(file_path):
         print(f'[ERROR] Error parsing watchlist: {e}')
         return []
 
+def build_default_recommendations():
+    return {
+        'strongBuy': 0,
+        'buy': 0,
+        'hold': 0,
+        'sell': 0,
+        'strongSell': 0,
+        'total': 0,
+    }
 def build_stock_table(items):
     table = '<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">'
     table += '<thead><tr><th>Ticker</th><th>Price</th><th>Threshold Cross</th><th>MA50</th><th>MA50 Value</th><th>MA200</th><th>MA200 Value</th><th>Mkt Cap</th><th>Trailing P/E</th><th>Forward P/E</th><th>P/B</th><th>EV/EBITDA</th></tr></thead>'
@@ -202,16 +211,18 @@ async def main(file_path, skip = False) -> None:
 
     for item in watchlist:
         symbol = item['symbol'].upper()
-        price = prices[symbol]
-        percentage_change = percentage_changes[symbol]
+        price = prices.get(symbol)
+        percentage_change = percentage_changes.get(symbol)
 
-        recommendations = recommendation_list[symbol]
-        ma50 = moving_averages[symbol]['ma50']
-        ma200 = moving_averages[symbol]['ma200']
+        recommendations = recommendation_list.get(symbol, build_default_recommendations())
+        moving_average = moving_averages.get(symbol, {'ma50': None, 'ma200': None})
+        ma50 = moving_average['ma50']
+        ma200 = moving_average['ma200']
         valuation = valuation_measures.get(symbol)
         try:
             if price is not None:
-                print(f'[{symbol}] Price: ${price}, Change (%): {percentage_change * 100}')
+                change_display = percentage_change * 100 if percentage_change is not None else 'N/A'
+                print(f'[{symbol}] Price: ${price}, Change (%): {change_display}')
 
                 await save_ticker(db, symbol, price, recommendations, percentage_change, ma50, ma200, skip = skip)
 
@@ -272,11 +283,12 @@ async def main(file_path, skip = False) -> None:
                     'recommendations': recommendations
                 })
             else:
-                print(f'[{symbol}] Error occurred in getting price change. Please ensure the stock symbol entered is correct')
-                errors.append({ 'symbol': symbol, 'error': 'Parsing Error' })
+                print(f'[{symbol}] Price data is unavailable. Skipping ticker and recording an error instead of failing the run.')
+                errors.append({ 'symbol': symbol, 'error': 'Price data unavailable', 'fatal': False })
             
         except Exception as e:
-            errors.append({ 'symbol': symbol, 'error': 'Internal Error', stack: str(e) })
+            print(f'[{symbol}] Internal error: {e}')
+            errors.append({ 'symbol': symbol, 'error': 'Internal Error', 'stack': str(e), 'fatal': True })
 
         time.sleep(5)
 
@@ -297,8 +309,13 @@ async def main(file_path, skip = False) -> None:
     if len(errors) > 0:
         print('[ERROR] Sending debug email...')
         send_debug_email(errors, skip = skip)
-        print('[FIN] Fail')
-        raise Exception('Error(s) found')
+        fatal_errors = [error for error in errors if error.get('fatal', True)]
+        if len(fatal_errors) > 0:
+            print('[FIN] Fail')
+            raise Exception('Fatal error(s) found')
+        print('[WARN] Completed with recoverable ticker errors')
+        print('[FIN] Success')
+        return
 
     print('[FIN] Success')
 

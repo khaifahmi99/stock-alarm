@@ -14,10 +14,10 @@ jobs:
     name: "Validate Watchlist JSON"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: json-yaml-validate
-        uses: GrantBirki/json-yaml-validate@v3.0.0
+        uses: GrantBirki/json-yaml-validate@v4.0.0
         with:
           json_schema: schema/schema.json
           files: |

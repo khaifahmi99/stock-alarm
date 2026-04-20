@@ -79,6 +79,48 @@ def get_moving_averages(tickers) -> dict:
             response[ticker] = {'ma50': None, 'ma200': None}
     return response
 
+'''
+Retrieve the current valuation measures of the tickers.
+The response will be a dict of ticker_code/{'marketCap': ..., 'trailingPE': ..., ...}
+Only the most recent (current) row of valuation_measures is returned.
+'''
+def get_valuation_measures(tickers) -> dict:
+    response = {}
+    for ticker, data in tickers.tickers.items():
+        print(f"[DEBUG]: Retrieving valuation measures for {ticker}")
+        try:
+            vm = data.valuation_measures
+            if vm is None or len(vm) == 0:
+                raise ValueError("No valuation data")
+            current = vm.iloc[-1]
+
+            def safe_val(key):
+                try:
+                    v = current[key]
+                    if v != v:  # NaN check
+                        return None
+                    return float(v)
+                except (KeyError, TypeError):
+                    return None
+
+            response[ticker] = {
+                'marketCap': safe_val('MarketCap'),
+                'trailingPE': safe_val('TrailingPE'),
+                'forwardPE': safe_val('ForwardPE'),
+                'priceToBook': safe_val('PriceToBook'),
+                'evToEbitda': safe_val('EnterprisesToEbitda'),
+            }
+        except Exception as e:
+            print(f"[ERROR]: Error retrieving valuation measures for {ticker}: {e}")
+            response[ticker] = {
+                'marketCap': None,
+                'trailingPE': None,
+                'forwardPE': None,
+                'priceToBook': None,
+                'evToEbitda': None,
+            }
+    return response
+
 def get_recommendations(tickers) -> dict:
     response = {}
     for ticker, data in tickers.tickers.items():

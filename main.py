@@ -8,7 +8,7 @@ import asyncio
 from prisma import Prisma
 import argparse
 
-from ticker.api import get_prices, get_tickers, get_recommendations, get_percentage_change, get_moving_averages
+from ticker.api import get_prices, get_tickers, get_recommendations, get_percentage_change, get_moving_averages, get_valuation_measures
 
 RESEND_API_KEY = os.environ['RESEND_API_KEY']
 PRIMARY_RECEPIENT = os.environ['PRIMARY_RECEPIENT']
@@ -34,7 +34,7 @@ def parse_watchlist(file_path):
 
 def build_stock_table(items):
     table = '<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">'
-    table += '<thead><tr><th>Ticker</th><th>Price</th><th>Threshold Cross</th><th>MA50</th><th>MA50 Value</th><th>MA200</th><th>MA200 Value</th></tr></thead>'
+    table += '<thead><tr><th>Ticker</th><th>Price</th><th>Threshold Cross</th><th>MA50</th><th>MA50 Value</th><th>MA200</th><th>MA200 Value</th><th>Mkt Cap</th><th>Trailing P/E</th><th>Forward P/E</th><th>P/B</th><th>EV/EBITDA</th></tr></thead>'
     table += '<tbody>'
     for item in items:
         price = item['price']
@@ -46,8 +46,14 @@ def build_stock_table(items):
         ma200_value = ma200 if ma200 is not None else 'N/A'
         threshold_cross = '{}/{}'.format(len(item['thresholds_reached']), len(item['thresholds_configured']))
         ticker_link = '<a href="https://finance.yahoo.com/quote/{}" target="_blank">{}</a>'.format(item['symbol'], item['symbol'])
-        table += '<tr><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>'.format(
-            ticker_link, price, threshold_cross, ma50_arrow, ma50_value, ma200_arrow, ma200_value
+        vm = item.get('valuation', {}) or {}
+        table += '<tr><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>'.format(
+            ticker_link, price, threshold_cross, ma50_arrow, ma50_value, ma200_arrow, ma200_value,
+            vm.get('marketCap') or 'N/A',
+            vm.get('trailingPE') or 'N/A',
+            vm.get('forwardPE') or 'N/A',
+            vm.get('priceToBook') or 'N/A',
+            vm.get('evToEbitda') or 'N/A',
         )
     table += '</tbody></table>'
     return table
@@ -192,6 +198,7 @@ async def main(file_path, skip = False) -> None:
     recommendation_list = get_recommendations(tickers)
     percentage_changes = get_percentage_change(tickers)
     moving_averages = get_moving_averages(tickers)
+    valuation_measures = get_valuation_measures(tickers)
 
     for item in watchlist:
         symbol = item['symbol'].upper()
@@ -201,6 +208,7 @@ async def main(file_path, skip = False) -> None:
         recommendations = recommendation_list[symbol]
         ma50 = moving_averages[symbol]['ma50']
         ma200 = moving_averages[symbol]['ma200']
+        valuation = valuation_measures.get(symbol)
         try:
             if price is not None:
                 print(f'[{symbol}] Price: ${price}, Change (%): {percentage_change * 100}')
@@ -228,6 +236,7 @@ async def main(file_path, skip = False) -> None:
                             'thresholds_configured': lower_thresholds,
                             'ma50': ma50,
                             'ma200': ma200,
+                            'valuation': valuation,
                         })
 
                 print(f'[{symbol} (${price})] Checking price change (upper)')
@@ -248,6 +257,7 @@ async def main(file_path, skip = False) -> None:
                             'thresholds_configured': upper_thresholds,
                             'ma50': ma50,
                             'ma200': ma200,
+                            'valuation': valuation,
                         })
 
                 print('---------------------------------------------------------------')

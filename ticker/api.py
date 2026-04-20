@@ -82,33 +82,25 @@ def get_moving_averages(tickers) -> dict:
 '''
 Retrieve the current valuation measures of the tickers.
 The response will be a dict of ticker_code/{'marketCap': ..., 'trailingPE': ..., ...}
-Only the most recent (current) row of valuation_measures is returned.
+Values are taken directly from t.valuation['Current'].
 '''
 def get_valuation_measures(tickers) -> dict:
     response = {}
     for ticker, data in tickers.tickers.items():
         print(f"[DEBUG]: Retrieving valuation measures for {ticker}")
         try:
-            vm = data.valuation_measures
-            if vm is None or len(vm) == 0:
-                raise ValueError("No valuation data")
-            current = vm.iloc[-1]
+            current = (data.valuation or {}).get('Current') or {}
 
             def safe_val(key):
-                try:
-                    v = current[key]
-                    if v != v:  # NaN check
-                        return None
-                    return float(v)
-                except (KeyError, TypeError):
-                    return None
+                v = current.get(key)
+                return v if v not in (None, '-', '') else None
 
             response[ticker] = {
-                'marketCap': safe_val('MarketCap'),
-                'trailingPE': safe_val('TrailingPE'),
-                'forwardPE': safe_val('ForwardPE'),
-                'priceToBook': safe_val('PriceToBook'),
-                'evToEbitda': safe_val('EnterprisesToEbitda'),
+                'marketCap': safe_val('Market Cap'),
+                'trailingPE': safe_val('Trailing P/E'),
+                'forwardPE': safe_val('Forward P/E'),
+                'priceToBook': safe_val('Price/Book (mrq)'),
+                'evToEbitda': safe_val('Enterprise Value/EBITDA'),
             }
         except Exception as e:
             print(f"[ERROR]: Error retrieving valuation measures for {ticker}: {e}")

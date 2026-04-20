@@ -32,22 +32,6 @@ def parse_watchlist(file_path):
         print(f'[ERROR] Error parsing watchlist: {e}')
         return []
 
-def fmt_valuation(value, decimals=2):
-    if value is None:
-        return 'N/A'
-    return f'{value:,.{decimals}f}'
-
-def fmt_market_cap(value):
-    if value is None:
-        return 'N/A'
-    if value >= 1e12:
-        return f'${value / 1e12:.2f}T'
-    if value >= 1e9:
-        return f'${value / 1e9:.2f}B'
-    if value >= 1e6:
-        return f'${value / 1e6:.2f}M'
-    return f'${value:,.0f}'
-
 def build_stock_table(items):
     table = '<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">'
     table += '<thead><tr><th>Ticker</th><th>Price</th><th>Threshold Cross</th><th>MA50</th><th>MA50 Value</th><th>MA200</th><th>MA200 Value</th><th>Mkt Cap</th><th>Trailing P/E</th><th>Forward P/E</th><th>P/B</th><th>EV/EBITDA</th></tr></thead>'
@@ -65,11 +49,11 @@ def build_stock_table(items):
         vm = item.get('valuation', {}) or {}
         table += '<tr><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>'.format(
             ticker_link, price, threshold_cross, ma50_arrow, ma50_value, ma200_arrow, ma200_value,
-            fmt_market_cap(vm.get('marketCap')),
-            fmt_valuation(vm.get('trailingPE')),
-            fmt_valuation(vm.get('forwardPE')),
-            fmt_valuation(vm.get('priceToBook')),
-            fmt_valuation(vm.get('evToEbitda')),
+            vm.get('marketCap') or 'N/A',
+            vm.get('trailingPE') or 'N/A',
+            vm.get('forwardPE') or 'N/A',
+            vm.get('priceToBook') or 'N/A',
+            vm.get('evToEbitda') or 'N/A',
         )
     table += '</tbody></table>'
     return table

@@ -457,6 +457,26 @@
 					5.0
 				]
 			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "IAA.AX",
+			"thresholds": {
+				"lower": [],
+				"upper": [
+					200
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "IEM.AX",
+			"thresholds": {
+				"lower": [],
+				"upper": [
+					100
+				]
+			}
 		}
 	]
 }

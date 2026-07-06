@@ -462,10 +462,10 @@
 			"market": "ASX",
 			"symbol": "IAA.AX",
 			"thresholds": {
-				"lower": [],
-				"upper": [
+				"lower": [
 					200
-				]
+				],
+				"upper": []
 			}
 		},
 		{

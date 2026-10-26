@@ -2,20 +2,6 @@
 	"watchlist": [
 		{
 			"market": "NASDAQ",
-			"symbol": "DXYZ",
-			"thresholds": {
-				"lower": [
-					20,
-					25,
-					30
-				],
-				"upper": [
-					80
-				]
-			}
-		},
-		{
-			"market": "NASDAQ",
 			"symbol": "RKLB",
 			"thresholds": {
 				"lower": [
@@ -32,14 +18,12 @@
 			"symbol": "AAPL",
 			"thresholds": {
 				"lower": [
-					175,
-					200,
-					210
-				],
-				"upper": [
-					250,
 					275,
 					300
+				],
+				"upper": [
+					400,
+					500
 				]
 			}
 		},
@@ -48,13 +32,11 @@
 			"symbol": "AMD",
 			"thresholds": {
 				"lower": [
-					120,
-					150,
-					180
+					450
 				],
 				"upper": [
-					250,
-					300
+					600,
+					750
 				]
 			}
 		},
@@ -67,7 +49,10 @@
 					200,
 					210
 				],
-				"upper": [250]
+				"upper": [
+					250,
+					300
+				]
 			}
 		},
 		{
@@ -78,7 +63,11 @@
 					100,
 					120
 				],
-				"upper": [200]
+				"upper": [
+					400,
+					450,
+					500
+				]
 			}
 		},
 		{
@@ -101,7 +90,10 @@
 					225,
 					250
 				],
-				"upper": [350]
+				"upper": [
+					350,
+					400
+				]
 			}
 		},
 		{
@@ -109,6 +101,7 @@
 			"symbol": "META",
 			"thresholds": {
 				"lower": [
+					450,
 					550,
 					600
 				],
@@ -131,8 +124,9 @@
 			"symbol": "NFLX",
 			"thresholds": {
 				"lower": [
-					70,
-					80
+					50,
+					60,
+					75
 				],
 				"upper": [150]
 			}
@@ -143,7 +137,8 @@
 			"thresholds": {
 				"lower": [
 					150,
-					165
+					165,
+					180
 				],
 				"upper": [250]
 			}
@@ -171,7 +166,8 @@
 					125
 				],
 				"upper": [
-					200
+					250,
+					300
 				]
 			}
 		},
@@ -180,24 +176,11 @@
 			"symbol": "ADBE",
 			"thresholds": {
 				"lower": [
-					250,
-					300
+					200,
+					250
 				],
 				"upper": [
 					500
-				]
-			}
-		},
-		{
-			"market": "NYSE",
-			"symbol": "UBER",
-			"thresholds": {
-				"lower": [
-					75,
-					80
-				],
-				"upper": [
-					100
 				]
 			}
 		},
@@ -206,37 +189,10 @@
 			"symbol": "CRWD",
 			"thresholds": {
 				"lower": [
-					400
+					100
 				],
 				"upper": [
-					500,
-					600
-				]
-			}
-		},
-		{
-			"market": "NASDAQ",
-			"symbol": "AVGO",
-			"thresholds": {
-				"lower": [
-					180,
-					200
-				],
-				"upper": [
-					500
-				]
-			}
-		},
-		{
-			"market": "NASDAQ",
-			"symbol": "LULU",
-			"thresholds": {
-				"lower": [
-					150,
-					175
-				],
-				"upper": [
-					350,
+					300,
 					400
 				]
 			}
@@ -259,25 +215,12 @@
 			"symbol": "SOFI",
 			"thresholds": {
 				"lower": [
-					17.5
+					10,
+					12
 				],
 				"upper": [
-					30,
-					35
-				]
-			}
-		},
-		{
-			"market": "NYSE",
-			"symbol": "TSM",
-			"thresholds": {
-				"lower": [
-					150,
-					175,
-					200
-				],
-				"upper": [
-					400
+					27,
+					30
 				]
 			}
 		},
@@ -292,21 +235,22 @@
 					900
 				],
 				"upper": [
-					1200,
+					1400,
 					1500
 				]
 			}
 		},
 		{
-			"market": "NYSE",
-			"symbol": "NOW",
+			"market": "NASDAQ",
+			"symbol": "INTC",
 			"thresholds": {
 				"lower": [
-					100,
-					110
+					75,
+					100
 				],
 				"upper": [
-					220
+					150,
+					200
 				]
 			}
 		}

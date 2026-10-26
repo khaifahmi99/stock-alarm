@@ -2,6 +2,43 @@
 	"watchlist": [
 		{
 			"market": "ASX",
+			"symbol": "NUGG.AX",
+			"thresholds": {
+				"lower": [
+					55
+				],
+				"upper": [
+					70
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "RCKT.AX",
+			"thresholds": {
+				"lower": [
+					8
+				],
+				"upper": [
+					20
+				]
+			}
+		},
+		{
+			"market": "ASX",
+			"symbol": "EXUS.AX",
+			"thresholds": {
+				"lower": [
+					35
+				],
+				"upper": [
+					40,
+					45
+				]
+			}
+		},
+		{
+			"market": "ASX",
 			"symbol": "FMG.AX",
 			"thresholds": {
 				"lower": [
@@ -99,15 +136,14 @@
 		},
 		{
 			"market": "ASX",
-			"symbol": "NDQ.AX",
+			"symbol": "U100.AX",
 			"thresholds": {
 				"lower": [
-					50
+					15,
+					16
 				],
 				"upper": [
-					60,
-					65,
-					70
+					20
 				]
 			}
 		},
